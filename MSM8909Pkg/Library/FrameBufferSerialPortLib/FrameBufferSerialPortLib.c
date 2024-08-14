@@ -54,6 +54,7 @@ SerialPortInitialize
 	VOID
 )
 {
+	return 1;
 	UINTN InterruptState = 0;
 
 	// Prevent dup initialization

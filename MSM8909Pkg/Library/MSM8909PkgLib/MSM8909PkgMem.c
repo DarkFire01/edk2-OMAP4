@@ -88,6 +88,6 @@ ArmPlatformGetVirtualMemoryMap (
     // Last one (terminator)
     ASSERT(Index < MAX_ARM_MEMORY_REGION_DESCRIPTOR_COUNT);
     
-    *VirtualMemoryMap = MemoryDescriptor;
+   // *VirtualMemoryMap = MemoryDescriptor;
   //ASSERT(0);
 }

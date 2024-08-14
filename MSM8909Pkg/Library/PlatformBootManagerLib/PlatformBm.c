@@ -112,7 +112,7 @@ STATIC PLATFORM_SERIAL_CONSOLE mSerialConsole = {
   {
     { MESSAGING_DEVICE_PATH, MSG_UART_DP, DP_NODE_LEN (UART_DEVICE_PATH) },
     0,                                      // Reserved
-    FixedPcdGet64 (PcdUartDefaultBaudRate), // BaudRate
+    115200, // BaudRate
     FixedPcdGet8 (PcdUartDefaultDataBits),  // DataBits
     FixedPcdGet8 (PcdUartDefaultParity),    // Parity
     FixedPcdGet8 (PcdUartDefaultStopBits)   // StopBits

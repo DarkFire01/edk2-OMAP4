@@ -26,33 +26,18 @@
 #include <Library/SerialPortLib.h>
 
 VOID EFIAPI ProcessLibraryConstructorList(VOID);
+UINT32* SerialAddrTwl = (UINT32*)0x48020000;
 
 STATIC VOID UartInit(VOID)
 {
-  /* Clear screen at new FB address */ 
-  UINT8 *base = (UINT8 *)0x80400000ull;
-  for (UINTN i = 0; i < 0x00800000; i++) {
-    base[i] = 0;
-  }
-
-  // Set BGR Format
-  MmioWrite32(0x1A90000, 0x418213F);
-  // Set stride
-  MmioWrite32(0x1A9000C, 4 * PcdGet32(PcdMipiFrameBufferWidth));
-  /* Move from old FB to the Windows Mobile platform one, so it fits with the UEFIplat */
-  MmioWrite32(0x1A90008,0x80400000);
-
-  SerialPortInitialize();
-
-  DEBUG((EFI_D_INFO, "\nTianoCore on MSM8909 (ARM)\n"));
+  DEBUG((EFI_D_INFO, "\nTianoCore on OMAP4 (ARM)\n"));
   DEBUG(
-      (EFI_D_INFO, "Firmware version %s built %a %a\n\n",
+      (EFI_D_INFO, "Firmware version %s built %a\n\n",
        (CHAR16 *)PcdGetPtr(PcdFirmwareVersionString), __TIME__, __DATE__));
 }
 
 VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 {
-
   EFI_HOB_HANDOFF_INFO_TABLE *HobList;
   EFI_STATUS                  Status;
 

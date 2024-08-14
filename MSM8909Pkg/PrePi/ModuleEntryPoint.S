@@ -14,7 +14,7 @@
 
 #include <AsmMacroIoLib.h>
 #include <Library/PcdLib.h>
-#include <Arm/AArch32.h>
+
 .text
 .align 3
 
@@ -39,6 +39,7 @@ _StackSize:
   .quad FixedPcdGet32(PcdPrePiStackSize)
 
 _ModuleEntryPoint:
+
   /* World reset */
   bl ASM_PFX(ArmDeInitialize)
   

@@ -34,7 +34,7 @@ SerialPortInitialize (
   VOID
   )
 {
-  UINT8* base = (UINT8*)0x8d100000ull;
+  UINT8* base = (UINT8*)0x48020000ull;
   for (UINTN i = 0; i < 0x200000; i++) {
     base[i] = 0;
   }
@@ -42,14 +42,8 @@ SerialPortInitialize (
 }
 
 static void mem_putchar(UINT8 c) {
-  static const UINTN size = 0x200000;
-  static UINTN offset = 0;
-  UINT8* base = (UINT8*)0x8d100000ull;
-  base[offset++] = c;
-  if (offset >= size) {
-    offset = 0;
-  }
-  WriteBackInvalidateDataCacheRange(base, size);
+  UINT8* base = (UINT8*)0x48020000ull;
+  *base = c;
 }
 
 /**
