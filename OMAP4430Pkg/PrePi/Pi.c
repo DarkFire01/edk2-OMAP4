@@ -58,7 +58,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   // Initialize (fake) UART.
   UartInit();
 
-  loaddisplay();
   // Declare UEFI region
   MemoryBase     = FixedPcdGet32(PcdSystemMemoryBase);
   MemorySize     = FixedPcdGet32(PcdSystemMemorySize);

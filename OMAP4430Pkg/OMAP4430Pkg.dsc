@@ -60,7 +60,7 @@
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
   BootLogoLib|MdeModulePkg/Library/BootLogoLib/BootLogoLib.inf
 
-  SerialPortLib|OMAP4430Pkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
+  SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
   RealTimeClockLib|EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
   TimeBaseLib|EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf
 
@@ -84,7 +84,7 @@
   FrameBufferBltLib|OMAP4430Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   
   # Platform Drivers
-  SerialPortLib|OMAP4430Pkg/Library/InMemorySerialPortLib/InMemorySerialPortLib.inf
+  SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
 
 [LibraryClasses.common.SEC]
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf

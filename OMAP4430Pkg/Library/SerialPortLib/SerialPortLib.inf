@@ -28,7 +28,6 @@
 [LibraryClasses]
   DebugLib
   IoLib
-  OmapLib
 
 [Packages]
   EmbeddedPkg/EmbeddedPkg.dec
