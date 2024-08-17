@@ -132,6 +132,15 @@
   gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
   gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
 
+   
+   # Timers
+  gOMAP4430PkgTokenSpaceGuid.PcdOmap44xxArchTimer|3
+  gOMAP4430PkgTokenSpaceGuid.PcdOmap44xxFreeTimer|4
+  gEmbeddedTokenSpaceGuid.PcdTimerPeriod|100000
+  gEmbeddedTokenSpaceGuid.PcdEmbeddedPerformanceCounterPeriodInNanoseconds|26
+  gEmbeddedTokenSpaceGuid.PcdEmbeddedPerformanceCounterFrequencyInHz|38400000
+     
+
   gArmTokenSpaceGuid.PcdArmArchTimerIntrNum|0x12
   gArmTokenSpaceGuid.PcdArmArchTimerVirtIntrNum|0x13
 

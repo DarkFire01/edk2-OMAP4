@@ -68,10 +68,11 @@ KeypadTimerHandler (
   }
 
   UINT64 CurrentCounterValue = GetPerformanceCounter();
-  UINT64 DeltaCounter = CurrentCounterValue - ConsoleIn->Last;
+//  UINT64 DeltaCounter = CurrentCounterValue - ConsoleIn->Last;
   ConsoleIn->Last = CurrentCounterValue;
-
-  ConsoleIn->KeypadDevice->GetKeys(ConsoleIn->KeypadDevice, &ConsoleIn->KeypadReturnApi, GetTimeInNanoSecond(DeltaCounter));
+  
+  DEBUG((EFI_D_INFO, "TODO: TIMER\n"));
+ // ConsoleIn->KeypadDevice->GetKeys(ConsoleIn->KeypadDevice, &ConsoleIn->KeypadReturnApi, GetTimeInNanoSecond(DeltaCounter));
 
   //
   // Leave critical section and return

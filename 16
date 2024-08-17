@@ -1,5 +1,5 @@
 Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
-Build start time: 11:35:08, Aug.17 2024
+Build start time: 11:53:36, Aug.17 2024
 
 WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
 PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
@@ -36,6 +36,7 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseSynchro
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGicArchLib/ArmGicArchLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/ArmGic/ArmGicLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/ResetSystemLib/ResetSystemLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootMaintenanceManagerUiLib/BootMaintenanceManagerUiLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootManagerUiLib/BootManagerUiLib.inf [ARM]
@@ -109,10 +110,9 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePerform
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/PrePiHobLib/PrePiHobLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseUefiDecompressLib/BaseUefiDecompressLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmArchTimerLib/ArmArchTimerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/TimerLib/TimerLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPlatformPkg/Library/PrePiHobListPointerLib/PrePiHobListPointerLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/DebugPeCoffExtraActionLib/DebugPeCoffExtraActionLib.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmLib/ArmBaseLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf [ARM]
@@ -161,7 +161,7 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PCD
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/PrePi/PrePi.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf [ARM]
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmV7ArchTimerSupport.obj: missing .note.GNU-stack section implies executable stack
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmMmuLibV7Support.obj: missing .note.GNU-stack section implies executable stack
 /usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
 /usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll has a LOAD segment with RWX permissions
 objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
@@ -181,10 +181,10 @@ Generating FVMAIN FV
 GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
 
 FV Space Information
-FVMAIN [99%Full] 3964672 (0x3c7f00) total, 3964616 (0x3c7ec8) used, 56 (0x38) free
-FVMAIN_COMPACT [65%Full] 1048576 (0x100000) total, 691080 (0xa8b88) used, 357496 (0x57478) free
+FVMAIN [99%Full] 3963648 (0x3c7b00) total, 3963624 (0x3c7ae8) used, 24 (0x18) free
+FVMAIN_COMPACT [65%Full] 1048576 (0x100000) total, 690624 (0xa89c0) used, 357952 (0x57640) free
 
 - Done -
-Build end time: 11:35:18, Aug.17 2024
-Build total time: 00:00:10
+Build end time: 11:53:45, Aug.17 2024
+Build total time: 00:00:09
 

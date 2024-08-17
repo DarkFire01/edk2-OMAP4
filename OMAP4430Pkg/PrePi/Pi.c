@@ -24,9 +24,53 @@
 #include <Library/PrePiHobListPointerLib.h>
 #include <Library/PrePiLib.h>
 #include <Library/SerialPortLib.h>
-
+#include <OMAP4430/OMAP4430.h>
 VOID EFIAPI ProcessLibraryConstructorList(VOID);
 UINT32* SerialAddrTwl = (UINT32*)0x48020000;
+
+
+UINT32
+TimerBase (
+  IN  UINTN Timer
+  )
+{
+  switch (Timer) {
+  case  1: return GPTIMER1_BASE;
+  case  2: return GPTIMER2_BASE;
+  case  3: return GPTIMER3_BASE;
+  case  4: return GPTIMER4_BASE;
+  case  5: return GPTIMER5_BASE;
+  case  6: return GPTIMER6_BASE;
+  case  7: return GPTIMER7_BASE;
+  case  8: return GPTIMER8_BASE;
+  case  9: return GPTIMER9_BASE;
+  case 10: return GPTIMER10_BASE;
+  case 11: return GPTIMER11_BASE;
+  case 12: return GPTIMER12_BASE;
+  default: return 0;
+  }
+}
+
+
+VOID
+TimerInit (
+  VOID
+  )
+{
+  UINTN  Timer            = 4;
+  UINT32 TimerBaseAddress = TimerBase(Timer);
+
+  // Set count & reload registers
+  MmioWrite32 (TimerBaseAddress + GPTIMER_TCRR, 0x00000000);
+  MmioWrite32 (TimerBaseAddress + GPTIMER_TLDR, 0x00000000);
+
+  // Disable interrupts
+  MmioWrite32 (TimerBaseAddress + GPTIMER_TIER, TIER_TCAR_IT_DISABLE | TIER_OVF_IT_DISABLE | TIER_MAT_IT_DISABLE);
+
+  // Start Timer
+  MmioWrite32 (TimerBaseAddress + GPTIMER_TCLR, TCLR_AR_AUTORELOAD | TCLR_ST_ON);
+
+}
 
 STATIC VOID UartInit(VOID)
 {
@@ -70,7 +114,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
        "UEFI Memory Base = 0x%X, Size = 0x%X, Stack Base = 0x%X, Stack "
        "Size = 0x%X\n",
        UefiMemoryBase, UefiMemorySize, StackBase, StackSize));
- 
+  TimerInit();
   DEBUG((EFI_D_INFO, "\nSetting up Hob COnstructor\n"));
   // Set up HOB
   HobList = HobConstructor(

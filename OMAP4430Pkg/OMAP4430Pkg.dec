@@ -36,6 +36,8 @@
 
 [PcdsFixedAtBuild.common]
   gOMAP4430PkgTokenSpaceGuid.PcdOmap35xxConsoleUart|3|UINT32|0x00000202
+  gOMAP4430PkgTokenSpaceGuid.PcdOmap44xxArchTimer|3|UINT32|0x00000204
+  gOMAP4430PkgTokenSpaceGuid.PcdOmap44xxFreeTimer|4|UINT32|0x00000205
   # Simple FrameBuffer
   gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvModeEnable|TRUE|BOOLEAN|1
 #TODO:

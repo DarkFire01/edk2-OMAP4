@@ -55,6 +55,6 @@
 #define PBIASSPEEDCTRL0       BIT2
 #define PBIASLITEVMODE1       BIT8
 #define PBIASLITEWRDNZ1       BIT9
-
+#include "timer.h"
 #endif // __OMAP3530_H__
 
