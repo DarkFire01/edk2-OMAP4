@@ -1,7 +1,7 @@
-Attempt to create a minimal EDK2 for some MSM8909 devices
+Attempt to create a minimal EDK2 for some OMAP4430 devices
 
 ## Status
-Boots to EFI shell, eMMC is working, the memory map is from WP target, ACPI from Lumia 650.
+Currently in early testing, just boots to early uefi
 
 ## Building
 Tested on Ubuntu 22.04.
@@ -30,7 +30,7 @@ Then ./scripts/firstrun.sh
 
 Finally, you can use one of the device scripts in the scripts folder to build your bootimg/thing.
 
-Then fastboot boot uefi.img from lk2nd.
+Then fastboot boot uefi.img from U-Boot console.
 
 # Credits
 
