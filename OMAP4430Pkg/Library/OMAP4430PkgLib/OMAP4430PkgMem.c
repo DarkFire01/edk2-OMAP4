@@ -49,6 +49,8 @@ AddHob
 	);
 }
 
+ARM_MEMORY_REGION_DESCRIPTOR MemoryDescriptor[MAX_ARM_MEMORY_REGION_DESCRIPTOR_COUNT];
+
 VOID
 ArmPlatformGetVirtualMemoryMap (
   IN ARM_MEMORY_REGION_DESCRIPTOR** VirtualMemoryMap
@@ -56,7 +58,6 @@ ArmPlatformGetVirtualMemoryMap (
 {
   //TO-DO:ADD MEMORY MAP HERE
     PARM_MEMORY_REGION_DESCRIPTOR_EX MemoryDescriptorEx = gDeviceMemoryDescriptorEx;
-    ARM_MEMORY_REGION_DESCRIPTOR MemoryDescriptor[MAX_ARM_MEMORY_REGION_DESCRIPTOR_COUNT];
     UINTN Index = 0;
 
     // Run through each memory descriptor
@@ -88,6 +89,6 @@ ArmPlatformGetVirtualMemoryMap (
     // Last one (terminator)
     ASSERT(Index < MAX_ARM_MEMORY_REGION_DESCRIPTOR_COUNT);
     
-  //  *VirtualMemoryMap = MemoryDescriptor;
+  *VirtualMemoryMap = (ARM_MEMORY_REGION_DESCRIPTOR*)MemoryDescriptor;
   //ASSERT(0);
 }

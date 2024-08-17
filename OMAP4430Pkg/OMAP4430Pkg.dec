@@ -41,17 +41,17 @@
 #TODO:
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x80400000|UINT32|0x0000a400 # 0x7C400000
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480|UINT32|0x0000a401
-  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854|UINT32|0x0000a402
-  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24|UINT32|0x0000a403
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|864|UINT32|0x0000a402
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32|UINT32|0x0000a403
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480|UINT32|0x0000a404
-  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854|UINT32|0x0000a405 
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|864|UINT32|0x0000a405 
 #TODO
-  gArmPlatformTokenSpaceGuid.PcdSystemMemoryUefiRegionSize|0x40000000|UINT32|0x00000036 #0x00800000
+  gArmPlatformTokenSpaceGuid.PcdSystemMemoryUefiRegionSize|0x20000000|UINT32|0x00000036 #0x00800000
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x10000|UINT32|0x00000038
   gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
  # Memory allocation
-  gOMAP4430PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x3CD00000|UINT64|0x00000a106
-  gOMAP4430PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x03300000|UINT32|0x00000a107
+  gOMAP4430PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x80C40000|UINT32|0x00000a106
+  gOMAP4430PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x10010000|UINT32|0x00000a107
   # PON Debounce
   gQcom  gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
 

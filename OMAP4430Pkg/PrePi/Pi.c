@@ -61,27 +61,28 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   // Declare UEFI region
   MemoryBase     = FixedPcdGet32(PcdSystemMemoryBase);
   MemorySize     = FixedPcdGet32(PcdSystemMemorySize);
-  UefiMemoryBase = MemoryBase + FixedPcdGet32(PcdPreAllocatedMemorySize);
+  UefiMemoryBase = (UINTN)0x80C40000;
   UefiMemorySize = FixedPcdGet32(PcdUefiMemPoolSize);
-  StackBase      = (VOID *)(UefiMemoryBase + UefiMemorySize - StackSize);
+  StackBase      = (VOID*)0x80C00000;
 
   DEBUG(
       (EFI_D_INFO | EFI_D_LOAD,
-       "UEFI Memory Base = 0x%llx, Size = 0x%llx, Stack Base = 0x%llx, Stack "
-       "Size = 0x%llx\n",
+       "UEFI Memory Base = 0x%X, Size = 0x%X, Stack Base = 0x%X, Stack "
+       "Size = 0x%X\n",
        UefiMemoryBase, UefiMemorySize, StackBase, StackSize));
-
+ 
+  DEBUG((EFI_D_INFO, "\nSetting up Hob COnstructor\n"));
   // Set up HOB
   HobList = HobConstructor(
       (VOID *)UefiMemoryBase, UefiMemorySize, (VOID *)UefiMemoryBase,
       StackBase);
-
+  DEBUG((EFI_D_INFO, "\nSetting up HobstLI\n"));
   PrePeiSetHobList(HobList);
 
   // Invalidate cache
   InvalidateDataCacheRange(
       (VOID *)(UINTN)PcdGet64(PcdFdBaseAddress), PcdGet32(PcdFdSize));
-
+  DEBUG((EFI_D_INFO, "\nSetting up MMU\n"));
   // Initialize MMU
   Status = MemoryPeim(UefiMemoryBase, UefiMemorySize);
 
@@ -92,13 +93,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   DEBUG((EFI_D_LOAD | EFI_D_INFO, "MMU configured from device config\n"));
 
-  // Initialize GIC
-    Status = QGicPeim();
-
-    if (EFI_ERROR(Status)) {
-      DEBUG((EFI_D_ERROR, "Failed to configure GIC\n"));
-      CpuDeadLoop();
-    }
 
   // Add HOBs
   BuildStackHob((UINTN)StackBase, StackSize);

@@ -18,7 +18,7 @@
   
   # Framebuffer (480x854)
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480
-  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|864
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth|480
-  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|854
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight|864
   gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|32

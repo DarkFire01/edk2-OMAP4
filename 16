@@ -1,0 +1,190 @@
+Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
+Build start time: 11:35:08, Aug.17 2024
+
+WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
+PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
+EDK_TOOLS_PATH   = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/../edk2/BaseTools
+CONF_PATH        = /home/edk2-linux/Desktop/logic/omap/edk2/Conf
+PYTHON_COMMAND   = python3
+
+
+Architecture(s)  = ARM
+Build target     = DEBUG
+Toolchain        = GCC5
+
+Active Platform          = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Devices/blaze.dsc
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseStackCheckLib/BaseStackCheckLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/CompilerIntrinsicsLib/CompilerIntrinsicsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiDriverEntryPoint/UefiDriverEntryPoint.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseDebugLibSerialPort/BaseDebugLibSerialPort.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePrintLib/BasePrintLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseDebugPrintErrorLevelLib/BaseDebugPrintErrorLevelLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsic.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxePcdLib/DxePcdLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseLib/BaseLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseMemoryLibOptDxe/BaseMemoryLibOptDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/CustomizedDisplayLib/CustomizedDisplayLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/AuthVariableLibNull/AuthVariableLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/TpmMeasurementLibNull/TpmMeasurementLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseSynchronizationLib/BaseSynchronizationLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGicArchLib/ArmGicArchLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/ArmGic/ArmGicLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/ResetSystemLib/ResetSystemLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootMaintenanceManagerUiLib/BootMaintenanceManagerUiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootManagerUiLib/BootManagerUiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DeviceManagerUiLib/DeviceManagerUiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/FileExplorerLib/FileExplorerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeCapsuleLibFmp/DxeRuntimeCapsuleLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseCpuLib/BaseCpuLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeCrc32GuidedSectionExtractLib/DxeCrc32GuidedSectionExtractLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/ImagePropertiesRecordLib/ImagePropertiesRecordLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmExceptionLib/ArmExceptionLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeCorePerformanceLib/DxeCorePerformanceLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeExtractGuidedSectionLib/DxeExtractGuidedSectionLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/DefaultExceptionHandlerLib/DefaultExceptionHandlerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeCoreHobLib/DxeCoreHobLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmDisassemblerLib/ArmDisassemblerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeCoreEntryPoint/DxeCoreEntryPoint.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeCoreMemoryAllocationLib/DxeCoreMemoryAllocationLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/RuntimeDxeReportStatusCodeLib/RuntimeDxeReportStatusCodeLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiRuntimeLib/UefiRuntimeLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeRuntimeDebugLibSerialPort/DxeRuntimeDebugLibSerialPort.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellAcpiViewCommandLib/UefiShellAcpiViewCommandLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellNetwork1CommandsLib/UefiShellNetwork1CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellInstall1CommandsLib/UefiShellInstall1CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellDebug1CommandsLib/UefiShellDebug1CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellDriver1CommandsLib/UefiShellDriver1CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellLevel3CommandsLib/UefiShellLevel3CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellLevel1CommandsLib/UefiShellLevel1CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellLevel2CommandsLib/UefiShellLevel2CommandsLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/NetworkPkg/Library/DxeNetLib/DxeNetLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellBcfgCommandLib/UefiShellBcfgCommandLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellCommandLib/UefiShellCommandLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiHandleParsingLib/UefiHandleParsingLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Library/UefiShellLib/UefiShellLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiFileHandleLib/UefiFileHandleLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BaseBmpSupportLib/BaseBmpSupportLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseSafeIntLib/BaseSafeIntLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/PlatformBootManagerLib/PlatformBootManagerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootLogoLib/BootLogoLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeCapsuleLibNull/DxeCapsuleLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiApplicationEntryPoint/UefiApplicationEntryPoint.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/UefiBootManagerLib/UefiBootManagerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeHobLib/DxeHobLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxePerformanceLib/DxePerformanceLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeServicesTableLib/DxeServicesTableLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxeServicesLib/DxeServicesLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeReportStatusCodeLib/DxeReportStatusCodeLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/UefiHiiLib/UefiHiiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/UefiSortLib/UefiSortLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/VariablePolicyHelperLib/VariablePolicyHelperLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiLib/UefiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiDevicePathLib/UefiDevicePathLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/UefiMemoryAllocationLib/UefiMemoryAllocationLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/PlatformPeiLib/PlatformPeiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/MemoryInitPeiLib/PeiMemoryAllocationLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DebugAgentLibNull/DebugAgentLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePeCoffGetEntryPointLib/BasePeCoffGetEntryPointLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/LzmaCustomDecompressLib/LzmaCustomDecompressLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmMmuLib/ArmMmuBaseLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/OMAP4430PkgLib/OMAP4430PkgLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/PrePiMemoryAllocationLib/PrePiMemoryAllocationLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/PrePiLib/PrePiLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/PrePiExtractGuidedSectionLib/PrePiExtractGuidedSectionLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmCacheMaintenanceLib/ArmCacheMaintenanceLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePerformanceLibNull/BasePerformanceLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Library/PrePiHobLib/PrePiHobLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseUefiDecompressLib/BaseUefiDecompressLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePeCoffLib/BasePeCoffLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmArchTimerLib/ArmArchTimerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPlatformPkg/Library/PrePiHobListPointerLib/PrePiHobListPointerLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/DebugPeCoffExtraActionLib/DebugPeCoffExtraActionLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmLib/ArmBaseLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseMemoryLib/BaseMemoryLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/FatPkg/EnhancedFatDxe/Fat.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/ArmGic/ArmGicDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/ResetRuntimeDxe/ResetRuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/EmbeddedMonotonicCounter/EmbeddedMonotonicCounter.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PrintDxe/PrintDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/TimerDxe/TimerDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DriverHealthManagerDxe/DriverHealthManagerDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Drivers/AndroidFastbootTransportUsbDxe/FastbootTransportUsbDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acpi/AcpiPlatformDxe/AcpiPlatformDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Application/UiApp/UiApp.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/CpuDxe/CpuDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SetupBrowserDxe/SetupBrowserDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Core/Dxe/DxeMain.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Core/RuntimeDxe/RuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/RealTimeClockRuntimeDxe/RealTimeClockRuntimeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SerialDxe/SerialDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Application/Shell/Shell.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/BdsDxe/BdsDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/Application/AndroidFastboot/AndroidFastbootApp.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PCD/Dxe/Pcd.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/PrePi/PrePi.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf [ARM]
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmV7ArchTimerSupport.obj: missing .note.GNU-stack section implies executable stack
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll has a LOAD segment with RWX permissions
+objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
+--strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
+--add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
+
+Fd File Name:OMAP4430PKG_UEFI (/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/OMAP4430PKG_UEFI.fd)
+
+Generate Region at Offset 0x0
+   Region Size = 0x100000
+   Region Name = FV
+
+Generating FVMAIN_COMPACT FV
+
+Generating FVMAIN FV
+
+GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
+
+FV Space Information
+FVMAIN [99%Full] 3964672 (0x3c7f00) total, 3964616 (0x3c7ec8) used, 56 (0x38) free
+FVMAIN_COMPACT [65%Full] 1048576 (0x100000) total, 691080 (0xa8b88) used, 357496 (0x57478) free
+
+- Done -
+Build end time: 11:35:18, Aug.17 2024
+Build total time: 00:00:10
+
