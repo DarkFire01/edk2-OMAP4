@@ -12,7 +12,7 @@
 !include OMAP4430Pkg/OMAP4430Pkg.dsc
 
 [PcdsFixedAtBuild.common]
-  # System Memory (1GB)
+  # System Memory (1GB DDR + Registers)
   gArmTokenSpaceGuid.PcdSystemMemoryBase|0x80000000
   gArmTokenSpaceGuid.PcdSystemMemorySize|0x40000000
   

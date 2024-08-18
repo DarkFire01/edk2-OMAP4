@@ -1,5 +1,5 @@
 Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
-Build start time: 11:53:36, Aug.17 2024
+Build start time: 17:31:12, Aug.17 2024
 
 WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
 PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
@@ -181,10 +181,10 @@ Generating FVMAIN FV
 GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
 
 FV Space Information
-FVMAIN [99%Full] 3963648 (0x3c7b00) total, 3963624 (0x3c7ae8) used, 24 (0x18) free
-FVMAIN_COMPACT [65%Full] 1048576 (0x100000) total, 690624 (0xa89c0) used, 357952 (0x57640) free
+FVMAIN [99%Full] 4188992 (0x3feb40) total, 4188968 (0x3feb28) used, 24 (0x18) free
+FVMAIN_COMPACT [71%Full] 1048576 (0x100000) total, 746400 (0xb63a0) used, 302176 (0x49c60) free
 
 - Done -
-Build end time: 11:53:45, Aug.17 2024
-Build total time: 00:00:09
+Build end time: 17:31:23, Aug.17 2024
+Build total time: 00:00:11
 

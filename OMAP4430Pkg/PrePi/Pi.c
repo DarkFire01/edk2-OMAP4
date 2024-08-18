@@ -80,6 +80,17 @@ STATIC VOID UartInit(VOID)
        (CHAR16 *)PcdGetPtr(PcdFirmwareVersionString), __TIME__, __DATE__));
 }
 
+VOID
+GpmcConfiguration (
+  VOID
+  )
+{
+  // Make sure all chip selects are disabled
+  // Kernel makes a wrong assumption about CS0 being already configured by ROM
+  MmioWrite32 (0x50000078, 0xF00);
+
+}
+
 void loaddisplay();
 
 VOID Main(IN VOID *StackBase, IN UINTN StackSize)
@@ -105,28 +116,37 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   // Declare UEFI region
   MemoryBase     = FixedPcdGet32(PcdSystemMemoryBase);
   MemorySize     = FixedPcdGet32(PcdSystemMemorySize);
-  UefiMemoryBase = (UINTN)0x80C40000;
+  UefiMemoryBase = MemoryBase + FixedPcdGet32(PcdPreAllocatedMemorySize);
   UefiMemorySize = FixedPcdGet32(PcdUefiMemPoolSize);
-  StackBase      = (VOID*)0x80C00000;
+  StackBase      = (VOID *)(UefiMemoryBase + UefiMemorySize - StackSize);
+  DEBUG((
+        EFI_D_INFO | EFI_D_LOAD,
+        "UEFI Memory Base = 0x%p, UEFI Memory Size = 0x%p\n",
+        UefiMemoryBase,
+        UefiMemorySize
+    ));
 
-  DEBUG(
-      (EFI_D_INFO | EFI_D_LOAD,
-       "UEFI Memory Base = 0x%X, Size = 0x%X, Stack Base = 0x%X, Stack "
-       "Size = 0x%X\n",
-       UefiMemoryBase, UefiMemorySize, StackBase, StackSize));
+  DEBUG((
+        EFI_D_INFO | EFI_D_LOAD,
+        "Stack Base = 0x%p, Stacks Size = 0x%p\n",
+        StackBase,
+        StackSize
+    ));
+
   TimerInit();
-  DEBUG((EFI_D_INFO, "\nSetting up Hob COnstructor\n"));
-  // Set up HOB
+
   HobList = HobConstructor(
       (VOID *)UefiMemoryBase, UefiMemorySize, (VOID *)UefiMemoryBase,
       StackBase);
-  DEBUG((EFI_D_INFO, "\nSetting up HobstLI\n"));
+
   PrePeiSetHobList(HobList);
 
   // Invalidate cache
   InvalidateDataCacheRange(
       (VOID *)(UINTN)PcdGet64(PcdFdBaseAddress), PcdGet32(PcdFdSize));
+    
   DEBUG((EFI_D_INFO, "\nSetting up MMU\n"));
+
   // Initialize MMU
   Status = MemoryPeim(UefiMemoryBase, UefiMemorySize);
 
@@ -136,7 +156,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   }
 
   DEBUG((EFI_D_LOAD | EFI_D_INFO, "MMU configured from device config\n"));
-
 
   // Add HOBs
   BuildStackHob((UINTN)StackBase, StackSize);
@@ -151,8 +170,10 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   Status = PlatformPeim();
   ASSERT_EFI_ERROR(Status);
 
+  GpmcConfiguration();
+
   // Install SoC driver HOBs
-  //InstallPlatformHob();
+ // InstallPlatformHob();
 
   // Now, the HOB List has been initialized, we can register performance
   // information PERF_START (NULL, "PEI", NULL, StartTimeStamp);
@@ -167,7 +188,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   // Load the DXE Core and transfer control to it
   Status = LoadDxeCoreFromFv(NULL, 0);
-  ASSERT_EFI_ERROR(Status);
 
   // We should never reach here
   CpuDeadLoop();

@@ -43,6 +43,11 @@ TimerBase (
   }
 }
 
+#ifdef MDE_CPU_ARM
+#define MULT_U64_X_N  MultU64x32
+#else
+#define MULT_U64_X_N  MultU64x64
+#endif
 
 RETURN_STATUS
 EFIAPI
@@ -50,7 +55,7 @@ TimerConstructor (
   VOID
   )
 {
-  UINTN  Timer            = PcdGet32(PcdOmap44xxFreeTimer);
+  UINTN  Timer            = PcdGet32(PcdOmap44xxFreeTimer );
   UINT32 TimerBaseAddress = TimerBase(Timer);
 	
   // If the DMTIMER3 and DMTIMER4 are not enabled it is probably because it is the first call to TimerConstructor
@@ -164,4 +169,44 @@ GetPerformanceCounterProperties (
   }
   
   return PcdGet64(PcdEmbeddedPerformanceCounterFrequencyInHz);
+}
+
+UINT64
+EFIAPI
+GetTimeInNanoSecond (
+  IN      UINT64  Ticks
+  )
+{
+  UINT64  NanoSeconds;
+  UINT32  Remainder;
+  UINT32  TimerFreq;
+
+  TimerFreq = 38400000;
+  //
+  //          Ticks
+  // Time = --------- x 1,000,000,000
+  //        Frequency
+  //
+  NanoSeconds = MULT_U64_X_N (
+                  DivU64x32Remainder (
+                    Ticks,
+                    TimerFreq,
+                    &Remainder
+                    ),
+                  1000000000U
+                  );
+
+  //
+  // Frequency < 0x100000000, so Remainder < 0x100000000, then (Remainder * 1,000,000,000)
+  // will not overflow 64-bit.
+  //
+  NanoSeconds += DivU64x32 (
+                   MULT_U64_X_N (
+                     (UINT64)Remainder,
+                     1000000000U
+                     ),
+                   TimerFreq
+                   );
+
+  return NanoSeconds;
 }

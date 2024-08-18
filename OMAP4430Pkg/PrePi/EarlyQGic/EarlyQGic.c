@@ -164,7 +164,7 @@ EFI_STATUS
 EFIAPI
 QGicPeim(VOID)
 {
-  QGicHardwareReset();
+
   QGicSetBinpoint();
   QGicDistInit();
   QGicCpuInit();

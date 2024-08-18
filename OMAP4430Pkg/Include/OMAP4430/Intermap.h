@@ -1,6 +1,6 @@
 #pragma once
 
-  #if 1
+  #if 0
   // SoC registers. L3 interconnects
    #define SOC_REGISTERS_L3_PHYSICAL_BASE       0x68000000
     #define SOC_REGISTERS_L3_PHYSICAL_LENGTH     0x08000000

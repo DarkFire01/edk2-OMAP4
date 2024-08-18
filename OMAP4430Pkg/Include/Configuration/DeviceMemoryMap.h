@@ -55,38 +55,21 @@ typedef struct {
 #define WRITE_BACK_XN ARM_MEMORY_REGION_ATTRIBUTE_WRITE_BACK
 #define UNCACHED_UNBUFFERED ARM_MEMORY_REGION_ATTRIBUTE_UNCACHED_UNBUFFERED
 #define UNCACHED_UNBUFFERED_XN ARM_MEMORY_REGION_ATTRIBUTE_UNCACHED_UNBUFFERED
-
+#if 1
 static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 //                                                    EFI_RESOURCE_ EFI_RESOURCE_ATTRIBUTE_        ARM_REGION_ATTRIBUTE_
 //MemBase,   MemSize,   MemLabel(32 Char.), BuildHob, ResourceType, ResourceAttribute, MemoryType, CacheAttributes
-
-//------------- DDR Regions ------},
-{0x80000000, 0x00010000, "HLOS 0",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
-{0x80010000, 0x00014000, "DBI Dump",         NoHob,  MMAP_IO, INITIALIZED, Conv,   DEVICE},
-{0x80024000, 0x001DC000, "HLOS 1",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
-{0x80100000, 0x00100000, "UEFI FD",          AddMem, SYS_MEM, SYS_MEM_CAP, BsCode, WRITE_BACK},
-{0x80300000, 0x00040000, "MPPark Code",      AddMem, MEM_RES, UNCACHEABLE, RtCode, UNCACHED_UNBUFFERED},
-{0x80340000, 0x00040000, "HLOS 2",           AddMem, SYS_MEM, SYS_MEM_CAP, BsData, UNCACHED_UNBUFFERED},
-{0x80380000, 0x00001000, "FBPT Payload",     AddMem, SYS_MEM, SYS_MEM_CAP, RtData, UNCACHED_UNBUFFERED},
-{0x80381000, 0x00004000, "DBG2",             AddMem, SYS_MEM, SYS_MEM_CAP, RtData, UNCACHED_UNBUFFERED},
-{0x80385000, 0x00001000, "Capsule Header",   AddMem, SYS_MEM, SYS_MEM_CAP, RtData, UNCACHED_UNBUFFERED},
-{0x80386000, 0x00003000, "TPM Control Area", AddMem, SYS_MEM, SYS_MEM_CAP, RtData, UNCACHED_UNBUFFERED},
-{0x80389000, 0x00001000, "UEFI Info Block",  AddMem, SYS_MEM, SYS_MEM_CAP, RtData, UNCACHED_UNBUFFERED},
-{0x8038A000, 0x00004000, "Reset Data",       AddMem, SYS_MEM, SYS_MEM_CAP, BsData, UNCACHED_UNBUFFERED},
-{0x8038E000, 0x00002000, "Reser. Uncached0", AddMem, SYS_MEM, SYS_MEM_CAP, BsData, UNCACHED_UNBUFFERED},
-{0x80390000, 0x00070000, "Reser. Uncached0", AddMem, SYS_MEM, SYS_MEM_CAP, BsData, UNCACHED_UNBUFFERED},
-{0x80400000, 0x00800000, "Display Reserved", AddMem, MEM_RES, WRITE_THROUGH, MaxMem, WRITE_THROUGH},
-{0x80C00000, 0x00040000, "UEFI Stack",       AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-{0x80C40000, 0x10010000, "Other",             AddMem, SYS_MEM, SYS_MEM_CAP, Conv, WRITE_BACK},
-
 //------------- Register Regions ----------
-{0x68000000, 0x08000000, "L3 INT",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
-{0x50000000, 0x08000000, "GPMC",             AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
-{0x48000000, 0x08000000, "L4 INT",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
+{0x48000000, 0x08000000, "L4 INT",           AddMem, SYS_MEM,  UNCACHEABLE, RtCode,   DEVICE},
+{0x50000000, 0x08000000, "GPMC",             AddMem, SYS_MEM,  UNCACHEABLE, RtCode,   DEVICE},
+{0x68000000, 0x08000000, "L3 INT",           AddMem, SYS_MEM,  UNCACHEABLE, RtCode,   DEVICE},
+//------------- DDR Regions ------},
+{0x80000000, 0x10000000, "UEFI FD and Stack",          AddMem, SYS_MEM, SYS_MEM_CAP, BsCode, WRITE_BACK},
+{0x90000000, 0x30000000, "HLOS 3",                     AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+
 //------------- Terminator for MMU ----------
 {0, 0, "Terminator", 0, 0, 0, 0, 0}
-
 };
-
+#endif
 #endif
 

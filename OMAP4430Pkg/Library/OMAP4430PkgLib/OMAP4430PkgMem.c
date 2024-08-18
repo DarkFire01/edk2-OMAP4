@@ -66,7 +66,7 @@ ArmPlatformGetVirtualMemoryMap (
         switch (MemoryDescriptorEx->HobOption)
         {
             case AddMem:
-			case AddDev:
+		      	case AddDev:
                 AddHob(MemoryDescriptorEx);
                 break;
             case NoHob:
@@ -89,6 +89,6 @@ ArmPlatformGetVirtualMemoryMap (
     // Last one (terminator)
     ASSERT(Index < MAX_ARM_MEMORY_REGION_DESCRIPTOR_COUNT);
     
-  *VirtualMemoryMap = (ARM_MEMORY_REGION_DESCRIPTOR*)MemoryDescriptor;
+    *VirtualMemoryMap = (ARM_MEMORY_REGION_DESCRIPTOR*)MemoryDescriptor;
   //ASSERT(0);
 }

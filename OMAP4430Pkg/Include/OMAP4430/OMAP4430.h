@@ -10,7 +10,7 @@
 #define __OMAP3530_H__
 
 #include "Omap3530Prcm.h"
-
+#include "Intermap.h"
 #define UART1_BASE  (0x0)
 #define UART2_BASE  (0x0)
 #define UART3_BASE  (0x48020000)
