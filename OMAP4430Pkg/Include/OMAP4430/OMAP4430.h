@@ -56,5 +56,8 @@
 #define PBIASLITEVMODE1       BIT8
 #define PBIASLITEWRDNZ1       BIT9
 #include "timer.h"
+#include "Omap4430Dma.h"
+#include "Omap4430Gpio.h"
+#include "Omap4430I2c.h"
 #endif // __OMAP3530_H__
 

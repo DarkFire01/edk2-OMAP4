@@ -55,7 +55,7 @@ TimerConstructor (
   VOID
   )
 {
-  UINTN  Timer            = PcdGet32(PcdOmap44xxFreeTimer );
+  UINTN  Timer            = PcdGet32(PcdOmap44xxFreeTimer);
   UINT32 TimerBaseAddress = TimerBase(Timer);
 	
   // If the DMTIMER3 and DMTIMER4 are not enabled it is probably because it is the first call to TimerConstructor

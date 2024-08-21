@@ -220,7 +220,7 @@
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
 
   ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-  ArmPkg/Drivers/TimerDxe/TimerDxe.inf
+  OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf
 
   MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
 
@@ -244,6 +244,9 @@
   OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf
   OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
   OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
+  OMAP4430Pkg/Drivers/SmBus/SmBus.inf
+  OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf
+
   #
   # USB Host Support
   #

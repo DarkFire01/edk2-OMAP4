@@ -1,5 +1,5 @@
 Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
-Build start time: 17:31:12, Aug.17 2024
+Build start time: 10:09:05, Aug.21 2024
 
 WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
 PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
@@ -36,7 +36,6 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseSynchro
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGicArchLib/ArmGicArchLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/ArmGic/ArmGicLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/ResetSystemLib/ResetSystemLib.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmGenericTimerPhyCounterLib/ArmGenericTimerPhyCounterLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/DxeSecurityManagementLib/DxeSecurityManagementLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootMaintenanceManagerUiLib/BootMaintenanceManagerUiLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BootManagerUiLib/BootManagerUiLib.inf [ARM]
@@ -118,6 +117,8 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseMemoryL
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BasePcdLibNull/BasePcdLibNull.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DisplayEngineDxe/DisplayEngineDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/FatPkg/EnhancedFatDxe/Fat.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/SmBus/SmBus.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/ArmGic/ArmGicDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/ResetRuntimeDxe/ResetRuntimeDxe.inf [ARM]
@@ -125,7 +126,6 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/EmbeddedMonoto
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Bus/Usb/UsbBusDxe/UsbBusDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PrintDxe/PrintDxe.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Drivers/TimerDxe/TimerDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/SmbiosPlatformDxe/SmbiosPlatformDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/DriverHealthManagerDxe/DriverHealthManagerDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SmbiosDxe/SmbiosDxe.inf [ARM]
@@ -134,6 +134,7 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acp
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acpi/AcpiTableDxe/AcpiTableDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SecurityStubDxe/SecurityStubDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Application/UiApp/UiApp.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/CapsuleRuntimeDxe/CapsuleRuntimeDxe.inf [ARM]
@@ -161,12 +162,12 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PCD
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/PrePi/PrePi.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf [ARM]
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmMmuLibV7Support.obj: missing .note.GNU-stack section implies executable stack
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: CompareGuid.obj: missing .note.GNU-stack section implies executable stack
 /usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll has a LOAD segment with RWX permissions
-objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
---strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
---add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll has a LOAD segment with RWX permissions
+objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
+--strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
+--add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
 
 Fd File Name:OMAP4430PKG_UEFI (/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/OMAP4430PKG_UEFI.fd)
 
@@ -181,10 +182,10 @@ Generating FVMAIN FV
 GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
 
 FV Space Information
-FVMAIN [99%Full] 4188992 (0x3feb40) total, 4188968 (0x3feb28) used, 24 (0x18) free
-FVMAIN_COMPACT [71%Full] 1048576 (0x100000) total, 746400 (0xb63a0) used, 302176 (0x49c60) free
+FVMAIN [99%Full] 4074048 (0x3e2a40) total, 4074024 (0x3e2a28) used, 24 (0x18) free
+FVMAIN_COMPACT [70%Full] 1048576 (0x100000) total, 743224 (0xb5738) used, 305352 (0x4a8c8) free
 
 - Done -
-Build end time: 17:31:23, Aug.17 2024
-Build total time: 00:00:11
+Build end time: 10:09:13, Aug.21 2024
+Build total time: 00:00:08
 

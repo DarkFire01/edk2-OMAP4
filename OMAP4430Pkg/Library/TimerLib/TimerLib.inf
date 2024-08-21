@@ -19,7 +19,7 @@
 
 [Defines]
   INF_VERSION                    = 0x00010005
-  BASE_NAME                      = PandaBoardTimerLib
+  BASE_NAME                      = OMap4430TimerLib
   FILE_GUID                      = fe1d7183-9abb-42ce-9a3b-36d7c6a8959f
   MODULE_TYPE                    = BASE
   VERSION_STRING                 = 1.0

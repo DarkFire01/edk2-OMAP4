@@ -53,7 +53,7 @@
   gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
  # Memory allocation
   gOMAP4430PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x10000000|UINT32|0x00000a106
-  gOMAP4430PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x043B0000|UINT32|0x00000a107
+  gOMAP4430PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x10000000|UINT32|0x00000a107
   # PON Debounce
   gQcom  gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
 

@@ -80,6 +80,8 @@ STATIC VOID UartInit(VOID)
        (CHAR16 *)PcdGetPtr(PcdFirmwareVersionString), __TIME__, __DATE__));
 }
 
+
+
 VOID
 GpmcConfiguration (
   VOID
@@ -92,6 +94,50 @@ GpmcConfiguration (
 }
 
 void loaddisplay();
+
+RETURN_STATUS
+EFIAPI
+TimerConstructor (
+  VOID
+  )
+{
+  UINTN  Timer            = 4;
+  UINT32 TimerBaseAddress = TimerBase(Timer);
+	
+  // If the DMTIMER3 and DMTIMER4 are not enabled it is probably because it is the first call to TimerConstructor
+  if ((MmioRead32 (0x4A009440) & 0x3) == 0x0) {
+    // Enable DMTIMER3 with SYS_CLK source
+    MmioOr32(0x4A009440, 0x2);
+
+    // Enable DMTIMER4 with SYS_CLK source
+    MmioOr32(0x4A009448, 0x2);
+  }
+
+  if ((MmioRead32 (TimerBaseAddress + GPTIMER_TCLR) & TCLR_ST_ON) == 0) {
+    // Set count & reload registers
+    MmioWrite32 (TimerBaseAddress + GPTIMER_TCRR, 0x00000000);
+    MmioWrite32 (TimerBaseAddress + GPTIMER_TLDR, 0x00000000);
+
+    // Disable interrupts
+    MmioWrite32 (TimerBaseAddress + GPTIMER_TIER, TIER_TCAR_IT_DISABLE | TIER_OVF_IT_DISABLE | TIER_MAT_IT_DISABLE);
+
+    // Start Timer
+    MmioWrite32 (TimerBaseAddress + GPTIMER_TCLR, TCLR_AR_AUTORELOAD | TCLR_ST_ON);
+
+    /* Sending first command to turn off watchdog */
+    MmioWrite32 (WDTIMER2_BASE + WSPR, 0xAAAA);
+
+    /* Wait for write to complete */
+	while( MmioBitFieldRead32(WDTIMER2_BASE + WWPS, 4, 5) );
+
+    /* Sending second command to turn off watchdog */
+    MmioWrite32 (WDTIMER2_BASE + WSPR, 0x5555);
+
+    /* Wait for write to complete */
+	while( MmioBitFieldRead32(WDTIMER2_BASE + WWPS, 4, 5) );
+  }
+  return EFI_SUCCESS;
+}
 
 VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 {
@@ -177,7 +223,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   // Now, the HOB List has been initialized, we can register performance
   // information PERF_START (NULL, "PEI", NULL, StartTimeStamp);
-
+  TimerConstructor();
   // SEC phase needs to run library constructors by hand.
   ProcessLibraryConstructorList();
 
