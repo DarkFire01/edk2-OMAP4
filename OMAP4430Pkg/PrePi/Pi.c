@@ -30,7 +30,7 @@ UINT32* SerialAddrTwl = (UINT32*)0x48020000;
 
 
 UINT32
-TimerBase (
+TimerBaseThree (
   IN  UINTN Timer
   )
 {
@@ -58,7 +58,7 @@ TimerInit (
   )
 {
   UINTN  Timer            = 4;
-  UINT32 TimerBaseAddress = TimerBase(Timer);
+  UINT32 TimerBaseAddress = TimerBaseThree(Timer);
 
   // Set count & reload registers
   MmioWrite32 (TimerBaseAddress + GPTIMER_TCRR, 0x00000000);
@@ -97,12 +97,12 @@ void loaddisplay();
 
 RETURN_STATUS
 EFIAPI
-TimerConstructor (
+TimerConstructorTwo (
   VOID
   )
 {
   UINTN  Timer            = 4;
-  UINT32 TimerBaseAddress = TimerBase(Timer);
+  UINT32 TimerBaseAddress = TimerBaseThree(Timer);
 	
   // If the DMTIMER3 and DMTIMER4 are not enabled it is probably because it is the first call to TimerConstructor
   if ((MmioRead32 (0x4A009440) & 0x3) == 0x0) {
@@ -158,7 +158,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   // Initialize (fake) UART.
   UartInit();
-
+  //loaddisplay();
   // Declare UEFI region
   MemoryBase     = FixedPcdGet32(PcdSystemMemoryBase);
   MemorySize     = FixedPcdGet32(PcdSystemMemorySize);
@@ -224,7 +224,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   // Now, the HOB List has been initialized, we can register performance
   // information PERF_START (NULL, "PEI", NULL, StartTimeStamp);
-  TimerConstructor();
+  TimerConstructorTwo();
   // SEC phase needs to run library constructors by hand.
   ProcessLibraryConstructorList();
 

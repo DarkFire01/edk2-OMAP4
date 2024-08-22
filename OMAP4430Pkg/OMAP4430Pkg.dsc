@@ -25,7 +25,7 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = OMAP4430Pkg/OMAP4430Pkg.fdf
-  DEFINE USE_SCREEN_FOR_SERIAL_OUTPUT = 0
+  DEFINE USE_SCREEN_FOR_SERIAL_OUTPUT = 1
 
 !include OMAP4430Pkg/CommonDsc.dsc.inc
 
@@ -60,7 +60,7 @@
   DxeServicesLib|MdePkg/Library/DxeServicesLib/DxeServicesLib.inf
   BootLogoLib|MdeModulePkg/Library/BootLogoLib/BootLogoLib.inf
 
-  SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
+  SerialPortLib|OMAP4430Pkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
   RealTimeClockLib|EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
   TimeBaseLib|EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf
 
@@ -84,8 +84,8 @@
   FrameBufferBltLib|OMAP4430Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   
   # Platform Drivers
-  SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
-
+  SerialPortLib|OMAP4430Pkg/Library/FrameBufferSerialPortLib/FrameBufferSerialPortLib.inf
+  OmapDmaLib|OMAP4430Pkg/Library/OmapDmaLib/OmapDmaLib.inf
 [LibraryClasses.common.SEC]
   PrePiLib|EmbeddedPkg/Library/PrePiLib/PrePiLib.inf
   ExtractGuidedSectionLib|EmbeddedPkg/Library/PrePiExtractGuidedSectionLib/PrePiExtractGuidedSectionLib.inf
@@ -229,9 +229,12 @@
   #
   # SoC Drivers
   #
-
+  OMAP4430Pkg/Drivers/SmBus/SmBus.inf
+  OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf
+  OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf
   OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
-
+  OMAP4430Pkg/Drivers/MmcHostDxe/MmcHostDxe.inf
+  OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
 
   #
   # Virtual Keyboard
@@ -242,10 +245,9 @@
   # Platform Dxes
   #
   OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf
+  #OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
   OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
   OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
-  OMAP4430Pkg/Drivers/SmBus/SmBus.inf
-  OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf
 
   #
   # USB Host Support

@@ -46,7 +46,7 @@ InterruptVectorForTimer (
    
 
 UINT32
-TimerBase (
+TimerBaseTwo (
   IN  UINTN Timer
   )
 {
@@ -376,7 +376,7 @@ TimerInitialize (
   ASSERT_EFI_ERROR (Status);
 
   // Set up the timer registers
-  TimerBaseAddress = TimerBase (FixedPcdGet32(PcdOmap44xxArchTimer));
+  TimerBaseAddress = TimerBaseTwo (FixedPcdGet32(PcdOmap44xxArchTimer));
   TISR = TimerBaseAddress + GPTIMER_TISR;
   TCLR = TimerBaseAddress + GPTIMER_TCLR;
   TLDR = TimerBaseAddress + GPTIMER_TLDR;

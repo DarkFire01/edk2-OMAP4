@@ -28,39 +28,52 @@
   @retval RETURN_DEVICE_ERROR   The serial device could not be initialized.
 
 **/
+ 
+static void mem_putchar(UINT8 c) {
+  UINT8* base = (UINT8*)0x48020000ull;
+  *base = c;
+}
+
+#include <OMAP4430/OMAP4430.h>
+
+UINT32
+UartBase (
+  IN  UINTN Uart
+  )
+{
+  switch (Uart) {
+  case 1:  return UART3_BASE;
+  case 2:  return UART3_BASE;
+  case 3:  return UART3_BASE;
+  default: return UART3_BASE;
+  }
+}
+
+/*
+
+  Programmed hardware of Serial port.
+
+  @return    Always return EFI_UNSUPPORTED.
+
+**/
 RETURN_STATUS
 EFIAPI
 SerialPortInitialize (
   VOID
   )
 {
-  UINT8* base = (UINT8*)0x48020000ull;
-  for (UINTN i = 0; i < 0x200000; i++) {
-    base[i] = 0;
-  }
+  // assume assembly code at reset vector has setup UART
   return RETURN_SUCCESS;
 }
 
-static void mem_putchar(UINT8 c) {
-  UINT8* base = (UINT8*)0x48020000ull;
-  *base = c;
-}
-
 /**
-  Write data from buffer to serial device.
+  Write data to serial device.
 
-  Writes NumberOfBytes data bytes from Buffer to the serial device.
-  The number of bytes actually written to the serial device is returned.
-  If the return value is less than NumberOfBytes, then the write operation failed.
-  If Buffer is NULL, then ASSERT().
-  If NumberOfBytes is zero, then return 0.
+  @param  Buffer           Point of data buffer which need to be writed.
+  @param  NumberOfBytes    Number of output bytes which are cached in Buffer.
 
-  @param  Buffer           The pointer to the data buffer to be written.
-  @param  NumberOfBytes    The number of bytes to written to the serial device.
-
-  @retval 0                NumberOfBytes is 0.
-  @retval >0               The number of bytes written to the serial device.
-                           If this value is less than NumberOfBytes, then the write operation failed.
+  @retval 0                Write data failed.
+  @retval !0               Actual number of bytes writed to serial device.
 
 **/
 UINTN
@@ -70,9 +83,15 @@ SerialPortWrite (
   IN UINTN     NumberOfBytes
 )
 {
-  for (UINTN i = 0; i < NumberOfBytes; i++) {
-    mem_putchar(Buffer[i]);
+  UINT32  LSR = UartBase(1) + UART_LSR_REG;
+  UINT32  THR = UartBase(1) + UART_THR_REG;
+  UINTN   Count;
+
+  for (Count = 0; Count < NumberOfBytes; Count++, Buffer++) {
+    while ((MmioRead8(LSR) & UART_LSR_TX_FIFO_E_MASK) == UART_LSR_TX_FIFO_E_NOT_EMPTY);
+    MmioWrite8(THR, *Buffer);
   }
+
   return NumberOfBytes;
 }
 
@@ -80,17 +99,11 @@ SerialPortWrite (
 /**
   Read data from serial device and save the datas in buffer.
 
-  Reads NumberOfBytes data bytes from a serial device into the buffer
-  specified by Buffer. The number of bytes actually read is returned.
-  If the return value is less than NumberOfBytes, then the rest operation failed.
-  If Buffer is NULL, then ASSERT().
-  If NumberOfBytes is zero, then return 0.
+  @param  Buffer           Point of data buffer which need to be writed.
+  @param  NumberOfBytes    Number of output bytes which are cached in Buffer.
 
-  @param  Buffer           The pointer to the data buffer to store the data read from the serial device.
-  @param  NumberOfBytes    The number of bytes which will be read.
-
-  @retval 0                Read data failed; No data is to be read.
-  @retval >0               The actual number of bytes read from serial device.
+  @retval 0                Read data failed.
+  @retval !0               Aactual number of bytes read from serial device.
 
 **/
 UINTN
@@ -100,18 +113,25 @@ SerialPortRead (
   IN  UINTN     NumberOfBytes
 )
 {
-  return 0;
+  UINT32  LSR = UartBase(1) + UART_LSR_REG;
+  UINT32  RBR = UartBase(1) + UART_RBR_REG;
+  UINTN   Count;
+
+  for (Count = 0; Count < NumberOfBytes; Count++, Buffer++) {
+    while ((MmioRead8(LSR) & UART_LSR_RX_FIFO_E_MASK) == UART_LSR_RX_FIFO_E_EMPTY);
+    *Buffer = MmioRead8(RBR);
+  }
+
+  return NumberOfBytes;
 }
 
+
 /**
-  Polls a serial device to see if there is any data waiting to be read.
+  Check to see if any data is avaiable to be read from the debug device.
 
-  Polls a serial device to see if there is any data waiting to be read.
-  If there is data waiting to be read from the serial device, then TRUE is returned.
-  If there is no data waiting to be read from the serial device, then FALSE is returned.
-
-  @retval TRUE             Data is waiting to be read from the serial device.
-  @retval FALSE            There is no data waiting to be read from the serial device.
+  @retval EFI_SUCCESS       At least one byte of data is avaiable to be read
+  @retval EFI_NOT_READY     No data is avaiable to be read
+  @retval EFI_DEVICE_ERROR  The serial device is not functioning properly
 
 **/
 BOOLEAN
@@ -120,13 +140,19 @@ SerialPortPoll (
   VOID
   )
 {
-  return FALSE;
+  UINT32 LSR = UartBase(1) + UART_LSR_REG;
+
+  if ((MmioRead8(LSR) & UART_LSR_RX_FIFO_E_MASK) == UART_LSR_RX_FIFO_E_NOT_EMPTY) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 /**
   Sets the control bits on a serial device.
 
-  @param Control                Sets the bits of Control that are settable.
+  @param[in] Control            Sets the bits of Control that are settable.
 
   @retval RETURN_SUCCESS        The new control bits were set on the serial device.
   @retval RETURN_UNSUPPORTED    The serial device does not support this operation.
@@ -145,7 +171,7 @@ SerialPortSetControl (
 /**
   Retrieve the status of the control bits on a serial device.
 
-  @param Control                A pointer to return the current control signals from the serial device.
+  @param[out] Control           A pointer to return the current control signals from the serial device.
 
   @retval RETURN_SUCCESS        The control bits were read from the serial device.
   @retval RETURN_UNSUPPORTED    The serial device does not support this operation.
@@ -158,7 +184,11 @@ SerialPortGetControl (
   OUT UINT32 *Control
   )
 {
-  return RETURN_UNSUPPORTED;
+  *Control = 0;
+  if (!SerialPortPoll ()) {
+    *Control = EFI_SERIAL_INPUT_BUFFER_EMPTY;
+  }
+  return RETURN_SUCCESS;
 }
 
 /**

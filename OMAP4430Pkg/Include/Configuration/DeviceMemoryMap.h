@@ -65,7 +65,7 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 {0x68000000, 0x08000000, "L3 INT",           AddMem, SYS_MEM,  UNCACHEABLE, RtCode,   DEVICE},
 //------------- DDR Regions ------},
 {0x80000000, 0x10000000, "UEFI FD and Stack",          AddMem, SYS_MEM, SYS_MEM_CAP, BsCode, WRITE_BACK},
-{0x90000000, 0x30000000, "HLOS 3",                     AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+{0x90000000, 0x10000000, "HLOS 3",                     AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
 
 //------------- Terminator for MMU ----------
 {0, 0, "Terminator", 0, 0, 0, 0, 0}

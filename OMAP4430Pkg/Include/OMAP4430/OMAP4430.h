@@ -59,5 +59,6 @@
 #include "Omap4430Dma.h"
 #include "Omap4430Gpio.h"
 #include "Omap4430I2c.h"
+#include "usb.h"
 #endif // __OMAP3530_H__
 

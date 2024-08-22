@@ -137,7 +137,13 @@ READ_LOCK_STATUS   = TRUE
   INF OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
 
   # SoC Drivers (Cross-referenced from EFIDroid and Ben)
+  INF OMAP4430Pkg/Drivers/SmBus/SmBus.inf
+  INF OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf
   INF OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
+  INF OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf
+  INF OMAP4430Pkg/Drivers/MmcHostDxe/MmcHostDxe.inf
+
+  INF OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
 
   #
   # USB Host Support
@@ -222,7 +228,7 @@ READ_LOCK_STATUS   = TRUE
 FvAlignment        = 8
 ERASE_POLARITY     = 1
 MEMORY_MAPPED      = TRUE
-STICKY_WRITE       = TRUE
+STICKY_WRITE       = TRUE                                                                                                                                                               
 LOCK_CAP           = TRUE
 LOCK_STATUS        = TRUE
 WRITE_DISABLED_CAP = TRUE
@@ -232,8 +238,8 @@ WRITE_LOCK_CAP     = TRUE
 WRITE_LOCK_STATUS  = TRUE
 READ_DISABLED_CAP  = TRUE
 READ_ENABLED_CAP   = TRUE
-READ_STATUS        = TRUE
-READ_LOCK_CAP      = TRUE
+READ_STATUS        = TRUE                    
+READ_LOCK_CAP      = TRUE                                                                                                                               
 READ_LOCK_STATUS   = TRUE
 
   INF OMAP4430Pkg/PrePi/PrePi.inf
@@ -243,5 +249,6 @@ READ_LOCK_STATUS   = TRUE
       SECTION FV_IMAGE = FVMAIN
     }
   }
-
+                                
 !include OMAP4430Pkg/CommonFdf.fdf.inc
+                                                                                                                                                             

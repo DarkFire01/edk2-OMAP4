@@ -1,0 +1,31 @@
+[Defines]
+  INF_VERSION    = 0x00010005
+  BASE_NAME      = FrameBufferSerialPortLib
+  MODULE_TYPE    = BASE
+  VERSION_STRING = 1.0
+  LIBRARY_CLASS  = SerialPortLib
+
+[Sources.common]
+  FrameBufferSerialPortLib.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  ArmPkg/ArmPkg.dec
+  OMAP4430Pkg/OMAP4430Pkg.dec
+
+[LibraryClasses]
+  ArmLib
+  PcdLib
+  IoLib
+  HobLib
+  CompilerIntrinsicsLib
+  CacheMaintenanceLib
+  TimerLib
+
+[Pcd]
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferAddress
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferWidth
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferHeight
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleWidth
+  gOMAP4430PkgTokenSpaceGuid.PcdMipiFrameBufferVisibleHeight
