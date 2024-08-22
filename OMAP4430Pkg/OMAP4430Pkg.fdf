@@ -108,8 +108,8 @@ READ_LOCK_STATUS   = TRUE
   # Multiple Console IO support
   #
   INF MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
-  #INF MSM8909Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
-  #INF MSM8909Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
+  INF OMAP4430Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
+  INF OMAP4430Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
   INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
 
@@ -142,8 +142,6 @@ READ_LOCK_STATUS   = TRUE
   INF OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
   INF OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf
   INF OMAP4430Pkg/Drivers/MmcHostDxe/MmcHostDxe.inf
-
-  INF OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
 
   #
   # USB Host Support

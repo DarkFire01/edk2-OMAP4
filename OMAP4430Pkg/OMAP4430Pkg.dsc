@@ -212,8 +212,8 @@
   EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
 
   MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
- # MSM8909Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
- # MSM8909Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
+  OMAP4430Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
+  OMAP4430Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
   MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
   MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
 
@@ -245,7 +245,6 @@
   # Platform Dxes
   #
   OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf
-  #OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
   OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
   OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
 

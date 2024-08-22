@@ -1,5 +1,5 @@
 Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
-Build start time: 06:05:37, Aug.22 2024
+Build start time: 06:41:08, Aug.22 2024
 
 WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
 PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
@@ -31,9 +31,9 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Library/
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ArmPkg/Library/ArmLib/ArmBaseLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseIoLibIntrinsic/BaseIoLibIntrinsic.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/RegisterFilterLibNull/RegisterFilterLibNull.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxePcdLib/DxePcdLib.inf [ARM]
-Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseLib/BaseLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseMemoryLibOptDxe/BaseMemoryLibOptDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/BaseLib/BaseLib.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdePkg/Library/DxePcdLib/DxePcdLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/CustomizedDisplayLib/CustomizedDisplayLib.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/VariablePolicyLib/VariablePolicyLibRuntimeDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Library/BaseVariableFlashInfoLib/BaseVariableFlashInfoLib.inf [ARM]
@@ -152,6 +152,7 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/EmbeddedPkg/RealTimeClockR
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/SerialDxe/SerialDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/ShellPkg/Application/Shell/Shell.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf [ARM]
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Acpi/BootGraphicsResourceTableDxe/BootGraphicsResourceTableDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Bus/Usb/UsbMassStorageDxe/UsbMassStorageDxe.inf [ARM]
@@ -166,12 +167,15 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Con
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/PrePi/PrePi.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf [ARM]
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmMmuLibV7Support.obj: missing .note.GNU-stack section implies executable stack
+Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf [ARM]
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper: note: see the ‘-flto’ option documentation for more information
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: ArmV7Support.obj: missing .note.GNU-stack section implies executable stack
 /usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll has a LOAD segment with RWX permissions
-objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
---strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
---add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/PrePi/PrePi/DEBUG/PrePi.dll
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.dll has a LOAD segment with RWX permissions
+objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.dll
+--strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.dll
+--add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Universal/BdsDxe/BdsDxe/DEBUG/BdsDxe.dll
 
 Fd File Name:OMAP4430PKG_UEFI (/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/OMAP4430PKG_UEFI.fd)
 
@@ -186,10 +190,10 @@ Generating FVMAIN FV
 GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
 
 FV Space Information
-FVMAIN [99%Full] 2940672 (0x2cdf00) total, 2940616 (0x2cdec8) used, 56 (0x38) free
-FVMAIN_COMPACT [72%Full] 1048576 (0x100000) total, 760600 (0xb9b18) used, 287976 (0x464e8) free
+FVMAIN [99%Full] 2976128 (0x2d6980) total, 2976112 (0x2d6970) used, 16 (0x10) free
+FVMAIN_COMPACT [73%Full] 1048576 (0x100000) total, 772536 (0xbc9b8) used, 276040 (0x43648) free
 
 - Done -
-Build end time: 06:05:46, Aug.22 2024
-Build total time: 00:00:09
+Build end time: 06:41:22, Aug.22 2024
+Build total time: 00:00:13
 
