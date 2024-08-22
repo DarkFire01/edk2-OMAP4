@@ -16,7 +16,6 @@
 #include <Library/PcdLib.h>
 
 .text
-.align 3
 
 #define LoadConstantToReg(Data, Reg) \
     ldr Reg, =Data
@@ -39,9 +38,12 @@ _StackSize:
   .quad FixedPcdGet32(PcdPrePiStackSize)
 
 _ModuleEntryPoint:
-
-  /* World reset */
-  bl ASM_PFX(ArmDeInitialize)
+   mrc     p15, 0, r0, c1, c0, 0
+  bic     r0, r0, #0x00002300     /* clear bits 13, 9:8 (--V- --RS) */
+  bic     r0, r0, #0x00000005     /* clear bits 0, 2 (---- -C-M) */
+  bic     r0, r0, #0x00000002     /* Clear bit 1 (Alignment faults) */
+  orr     r0, r0, #0x00001000     /* set bit 12 (I) enable I-Cache */
+  mcr     p15, 0, r0, c1, c0, 0
   
   /* Clear r0 for function calls below */
   mov r0, #0  

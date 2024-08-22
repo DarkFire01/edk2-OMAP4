@@ -129,8 +129,8 @@
   #
   # ARM General Interrupt Controller
   #
-  gArmTokenSpaceGuid.PcdGicDistributorBase|0x0b000000
-  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x0b002000
+  gArmTokenSpaceGuid.PcdGicDistributorBase|0x48241000
+  gArmTokenSpaceGuid.PcdGicInterruptInterfaceBase|0x48240100
 
    
    # Timers

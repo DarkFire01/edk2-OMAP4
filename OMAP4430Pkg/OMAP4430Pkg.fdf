@@ -114,6 +114,8 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
 
   INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
+  INF OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf
+
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
 
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf

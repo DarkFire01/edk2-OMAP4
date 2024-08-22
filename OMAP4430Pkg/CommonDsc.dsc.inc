@@ -225,7 +225,6 @@
 
 [BuildOptions.common.EDKII.DXE_RUNTIME_DRIVER]
   GCC:*_*_ARM_DLINK_FLAGS = -z common-page-size=0x1000
-  GCC:*_*_ARM_DLINK_FLAGS = -z common-page-size=0x10000
 
 ################################################################################
 #
@@ -308,13 +307,13 @@
   #
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiACPIReclaimMemory|0
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiACPIMemoryNVS|0
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiReservedMemoryType|0
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiReservedMemoryType|10
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesData|50
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesCode|20
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesCode|400
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesData|20000
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiLoaderCode|20
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiLoaderData|0
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiLoaderData|100
 
   # Set timer interrupt to be triggerred in 1ms to avoid missing
   # serial terminal input characters.

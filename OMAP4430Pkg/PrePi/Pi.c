@@ -179,6 +179,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
         StackSize
     ));
 
+
   TimerInit();
 
   HobList = HobConstructor(

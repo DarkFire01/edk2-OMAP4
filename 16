@@ -1,5 +1,5 @@
 Build environment: Linux-6.8.0-31-generic-x86_64-with-glibc2.39
-Build start time: 10:09:05, Aug.21 2024
+Build start time: 19:38:21, Aug.21 2024
 
 WORKSPACE        = /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace
 PACKAGES_PATH    = /home/edk2-linux/Desktop/logic/omap/edk2:/home/edk2-linux/Desktop/logic/omap/edk2-platforms:/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4
@@ -162,12 +162,14 @@ Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/PCD
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/OMAP4430Pkg/PrePi/PrePi.inf [ARM]
 Building ... /home/edk2-linux/Desktop/logic/omap/edk2/MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf [ARM]
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: CompareGuid.obj: missing .note.GNU-stack section implies executable stack
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+lto-wrapper: note: see the ‘-flto’ option documentation for more information
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: CompareMem.obj: missing .note.GNU-stack section implies executable stack
 /usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
-/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll has a LOAD segment with RWX permissions
-objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
---strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
---add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/OMAP4430Pkg/Drivers/GpioDxe/GpioDxe/DEBUG/Gpio.dll
+/usr/lib/gcc-cross/arm-linux-gnueabi/13/../../../../arm-linux-gnueabi/bin/ld: warning: /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Application/UiApp/UiApp/DEBUG/UiApp.dll has a LOAD segment with RWX permissions
+objcopy not needed for /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Application/UiApp/UiApp/DEBUG/UiApp.dll
+--strip-unneeded -R .eh_frame /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Application/UiApp/UiApp/DEBUG/UiApp.dll
+--add-gnu-debuglink=/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Application/UiApp/UiApp/DEBUG/UiApp.debug /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/ARM/MdeModulePkg/Application/UiApp/UiApp/DEBUG/UiApp.dll
 
 Fd File Name:OMAP4430PKG_UEFI (/home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/OMAP4430PKG_UEFI.fd)
 
@@ -182,10 +184,10 @@ Generating FVMAIN FV
 GUID cross reference file can be found at /home/edk2-linux/Desktop/logic/omap/edk2-OMAP4/workspace/Build/OMAP4430Pkg/DEBUG_GCC5/FV/Guid.xref
 
 FV Space Information
-FVMAIN [99%Full] 4074048 (0x3e2a40) total, 4074024 (0x3e2a28) used, 24 (0x18) free
-FVMAIN_COMPACT [70%Full] 1048576 (0x100000) total, 743224 (0xb5738) used, 305352 (0x4a8c8) free
+FVMAIN [99%Full] 2791936 (0x2a9a00) total, 2791896 (0x2a99d8) used, 40 (0x28) free
+FVMAIN_COMPACT [70%Full] 1048576 (0x100000) total, 744440 (0xb5bf8) used, 304136 (0x4a408) free
 
 - Done -
-Build end time: 10:09:13, Aug.21 2024
-Build total time: 00:00:08
+Build end time: 19:38:38, Aug.21 2024
+Build total time: 00:00:17
 
