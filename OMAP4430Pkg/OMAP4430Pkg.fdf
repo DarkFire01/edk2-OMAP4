@@ -108,37 +108,52 @@ READ_LOCK_STATUS   = TRUE
   # Multiple Console IO support
   #
   INF MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
-  #INF MSM8909Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
-  #INF MSM8909Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
-  INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
-  INF MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+  INF MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
+  INF MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf  
+  #INF EmbeddedPkg/SerialDxe/SerialDxe.inf
+  INF MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf  
 
   INF ArmPkg/Drivers/ArmGic/ArmGicDxe.inf
-  INF OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf
+  #INF OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf
 
   INF MdeModulePkg/Universal/WatchdogTimerDxe/WatchdogTimer.inf
 
   INF MdeModulePkg/Universal/PCD/Dxe/Pcd.inf
 
   #
-  # GPIO
+  # Nand Flash
   #
+  INF OMAP4430Pkg/Drivers/Flash/Flash.inf
 
   #
-  # Virtual Keyboard
+  # MMC/SD
   #
-  INF EmbeddedPkg/Drivers/VirtualKeyboardDxe/VirtualKeyboardDxe.inf
+  INF EmbeddedPkg/Universal/MmcDxe/MmcDxe.inf
+  INF OMAP4430Pkg/Drivers/MmcHostDxe/MmcHostDxe.inf
+  
+  #
+  # I2C
+  #
+  INF OMAP4430Pkg/Drivers/SmbusDxe/Smbus.inf
+  
+  #
+  # SoC Drivers
+  #
+  INF OMAP4430Pkg/Drivers/Gpio/Gpio.inf
+  INF OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf 
+  INF OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
 
   #
-  # Platform Dxes
+  # Power IC
   #
-  INF OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf
-  INF OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
-  INF OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
+  INF OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf
 
-  # SoC Drivers (Cross-referenced from EFIDroid and Ben)
-  INF OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
+  #
+  # USB Support (not supported currently)
+  #
 
+  INF OMAP4430Pkg/Drivers/PciEmulation/PciEmulation.inf
+  INF MdeModulePkg/Bus/Pci/EhciDxe/EhciDxe.inf
   #
   # USB Host Support
   #
@@ -166,7 +181,7 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
-
+  INF MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf
   INF MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
 
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
@@ -217,6 +232,13 @@ READ_LOCK_STATUS   = TRUE
   INF MdeModulePkg/Universal/DriverHealthManagerDxe/DriverHealthManagerDxe.inf
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
   INF MdeModulePkg/Application/UiApp/UiApp.inf
+
+  FILE FREEFORM = f542d663-4b48-40aa-aabf-ff158ccae3bc {
+    SECTION RAW = OMAP4430Pkg/Include/startup.nsh
+    SECTION UI = "startup.nsh"
+  }
+
+
 
 [FV.FVMAIN_COMPACT]
 FvAlignment        = 8

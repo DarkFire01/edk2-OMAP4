@@ -3,9 +3,14 @@
 
 
   Copyright (c) 2008 - 2009, Apple Inc. All rights reserved.<BR>
-  Copyright (c) 2015, Intel Corporation. All rights reserved.<BR>
+  
+  This program and the accompanying materials
+  are licensed and made available under the terms and conditions of the BSD License
+  which accompanies this distribution.  The full text of the license may be found at
+  http://opensource.org/licenses/bsd-license.php
 
-  SPDX-License-Identifier: BSD-2-Clause-Patent
+  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 
 **/
 
@@ -14,21 +19,8 @@
 #include <Library/SerialPortLib.h>
 #include <Library/PcdLib.h>
 #include <Library/IoLib.h>
-
-#include <OMAP4430/OMAP4430.h>
-
-UINT32
-UartBase (
-  IN  UINTN Uart
-  )
-{
-  switch (Uart) {
-  case 1:  return UART1_BASE;
-  case 2:  return UART2_BASE;
-  case 3:  return UART3_BASE;
-  default: ASSERT(FALSE); return 0;
-  }
-}
+#include <Library/OmapLib.h>
+#include <Omap4430/Omap4430.h>
 
 /*
 
@@ -43,7 +35,37 @@ SerialPortInitialize (
   VOID
   )
 {
-  // assume assembly code at reset vector has setup UART
+  UINTN   Uart            = PcdGet32(PcdOmap44xxConsoleUart);
+  UINT32  UartBaseAddress = UartBase(Uart);
+
+  // Configure UART3 pads
+  MmioAnd32(0x4A100144, ~0x70007);
+
+  // Enable UART3 clocks
+  MmioOr32(0x4A009550, 0x2);
+  
+  // Set MODE_SELECT=DISABLE before trying to initialize or modify DLL, DLH registers.
+  MmioWrite32 (UartBaseAddress + UART_MDR1_REG, UART_MDR1_MODE_SELECT_DISABLE);
+
+  // Put device in configuration mode.
+  MmioWrite32 (UartBaseAddress + UART_LCR_REG, UART_LCR_DIV_EN_ENABLE);
+
+  // Programmable divisor N = 48Mhz/16/115200 = 26
+  MmioWrite32 (UartBaseAddress + UART_DLL_REG, 3000000 / PcdGet64 (PcdUartDefaultBaudRate)); // low divisor
+  MmioWrite32 (UartBaseAddress + UART_DLH_REG,  0); // high divisor
+
+  // Enter into UART operational mode.
+  MmioWrite32 (UartBaseAddress + UART_LCR_REG, UART_LCR_DIV_EN_DISABLE | UART_LCR_CHAR_LENGTH_8);
+
+  // Force DTR and RTS output to active
+  MmioWrite32 (UartBaseAddress + UART_MCR_REG, UART_MCR_RTS_FORCE_ACTIVE | UART_MCR_DTR_FORCE_ACTIVE);
+
+  // Clear & enable fifos
+  MmioWrite32 (UartBaseAddress + UART_FCR_REG, UART_FCR_TX_FIFO_CLEAR | UART_FCR_RX_FIFO_CLEAR | UART_FCR_FIFO_ENABLE);  
+
+  // Restore MODE_SELECT 
+  MmioWrite32 (UartBaseAddress + UART_MDR1_REG, UART_MDR1_MODE_SELECT_UART_16X);
+
   return RETURN_SUCCESS;
 }
 
@@ -64,10 +86,10 @@ SerialPortWrite (
   IN UINTN     NumberOfBytes
 )
 {
-  UINT32  LSR = UartBase(PcdGet32(PcdOmap35xxConsoleUart)) + UART_LSR_REG;
-  UINT32  THR = UartBase(PcdGet32(PcdOmap35xxConsoleUart)) + UART_THR_REG;
+  UINT32  LSR = UartBase(PcdGet32(PcdOmap44xxConsoleUart)) + UART_LSR_REG;
+  UINT32  THR = UartBase(PcdGet32(PcdOmap44xxConsoleUart)) + UART_THR_REG;
   UINTN   Count;
-
+    
   for (Count = 0; Count < NumberOfBytes; Count++, Buffer++) {
     while ((MmioRead8(LSR) & UART_LSR_TX_FIFO_E_MASK) == UART_LSR_TX_FIFO_E_NOT_EMPTY);
     MmioWrite8(THR, *Buffer);
@@ -94,10 +116,10 @@ SerialPortRead (
   IN  UINTN     NumberOfBytes
 )
 {
-  UINT32  LSR = UartBase(PcdGet32(PcdOmap35xxConsoleUart)) + UART_LSR_REG;
-  UINT32  RBR = UartBase(PcdGet32(PcdOmap35xxConsoleUart)) + UART_RBR_REG;
+  UINT32  LSR = UartBase(PcdGet32(PcdOmap44xxConsoleUart)) + UART_LSR_REG;
+  UINT32  RBR = UartBase(PcdGet32(PcdOmap44xxConsoleUart)) + UART_RBR_REG;
   UINTN   Count;
-
+    
   for (Count = 0; Count < NumberOfBytes; Count++, Buffer++) {
     while ((MmioRead8(LSR) & UART_LSR_RX_FIFO_E_MASK) == UART_LSR_RX_FIFO_E_EMPTY);
     *Buffer = MmioRead8(RBR);
@@ -121,7 +143,7 @@ SerialPortPoll (
   VOID
   )
 {
-  UINT32 LSR = UartBase(PcdGet32(PcdOmap35xxConsoleUart)) + UART_LSR_REG;
+  UINT32 LSR = UartBase(PcdGet32(PcdOmap44xxConsoleUart)) + UART_LSR_REG;
 
   if ((MmioRead8(LSR) & UART_LSR_RX_FIFO_E_MASK) == UART_LSR_RX_FIFO_E_NOT_EMPTY) {
     return TRUE;
@@ -131,78 +153,50 @@ SerialPortPoll (
 }
 
 /**
-  Sets the control bits on a serial device.
+  Set the serial device control bits.
 
-  @param[in] Control            Sets the bits of Control that are settable.
-
-  @retval RETURN_SUCCESS        The new control bits were set on the serial device.
-  @retval RETURN_UNSUPPORTED    The serial device does not support this operation.
-  @retval RETURN_DEVICE_ERROR   The serial device is not functioning correctly.
+  @return    Always return EFI_UNSUPPORTED.
 
 **/
 RETURN_STATUS
 EFIAPI
 SerialPortSetControl (
-  IN UINT32 Control
+  IN UINT32                   Control
   )
 {
-  return RETURN_UNSUPPORTED;
+  return RETURN_SUCCESS;
 }
 
 /**
-  Retrieve the status of the control bits on a serial device.
+  Get the serial device control bits.
 
-  @param[out] Control           A pointer to return the current control signals from the serial device.
+  @param  Control                 Control signals read from the serial device.
 
-  @retval RETURN_SUCCESS        The control bits were read from the serial device.
-  @retval RETURN_UNSUPPORTED    The serial device does not support this operation.
-  @retval RETURN_DEVICE_ERROR   The serial device is not functioning correctly.
+  @retval EFI_SUCCESS             The control bits were read from the serial device.
+  @retval EFI_DEVICE_ERROR        The serial device is not functioning correctly.
 
 **/
 RETURN_STATUS
 EFIAPI
 SerialPortGetControl (
-  OUT UINT32 *Control
+  OUT UINT32                  *Control
   )
 {
-  *Control = 0;
-  if (!SerialPortPoll ()) {
-    *Control = EFI_SERIAL_INPUT_BUFFER_EMPTY;
+  if (SerialPortPoll ()) {
+    // If a character is pending don't set EFI_SERIAL_INPUT_BUFFER_EMPTY
+    *Control = EFI_SERIAL_OUTPUT_BUFFER_EMPTY;
+  } else {
+    *Control = EFI_SERIAL_INPUT_BUFFER_EMPTY | EFI_SERIAL_OUTPUT_BUFFER_EMPTY;
   }
+
   return RETURN_SUCCESS;
 }
 
+
 /**
-  Sets the baud rate, receive FIFO depth, transmit/receice time out, parity,
-  data bits, and stop bits on a serial device.
+  Set the serial device attributes.
 
-  @param BaudRate           The requested baud rate. A BaudRate value of 0 will use the
-                            device's default interface speed.
-                            On output, the value actually set.
-  @param ReveiveFifoDepth   The requested depth of the FIFO on the receive side of the
-                            serial interface. A ReceiveFifoDepth value of 0 will use
-                            the device's default FIFO depth.
-                            On output, the value actually set.
-  @param Timeout            The requested time out for a single character in microseconds.
-                            This timeout applies to both the transmit and receive side of the
-                            interface. A Timeout value of 0 will use the device's default time
-                            out value.
-                            On output, the value actually set.
-  @param Parity             The type of parity to use on this serial device. A Parity value of
-                            DefaultParity will use the device's default parity value.
-                            On output, the value actually set.
-  @param DataBits           The number of data bits to use on the serial device. A DataBits
-                            vaule of 0 will use the device's default data bit setting.
-                            On output, the value actually set.
-  @param StopBits           The number of stop bits to use on this serial device. A StopBits
-                            value of DefaultStopBits will use the device's default number of
-                            stop bits.
-                            On output, the value actually set.
-
-  @retval RETURN_SUCCESS            The new attributes were set on the serial device.
-  @retval RETURN_UNSUPPORTED        The serial device does not support this operation.
-  @retval RETURN_INVALID_PARAMETER  One or more of the attributes has an unsupported value.
-  @retval RETURN_DEVICE_ERROR       The serial device is not functioning correctly.
+  @return    Always return EFI_UNSUPPORTED.
 
 **/
 RETURN_STATUS
@@ -216,6 +210,6 @@ SerialPortSetAttributes (
   IN OUT EFI_STOP_BITS_TYPE *StopBits
   )
 {
-  return RETURN_UNSUPPORTED;
+  return RETURN_SUCCESS;
 }
 

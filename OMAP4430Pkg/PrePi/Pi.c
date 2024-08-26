@@ -27,50 +27,7 @@
 #include <OMAP4430/OMAP4430.h>
 VOID EFIAPI ProcessLibraryConstructorList(VOID);
 UINT32* SerialAddrTwl = (UINT32*)0x48020000;
-
-
-UINT32
-TimerBase (
-  IN  UINTN Timer
-  )
-{
-  switch (Timer) {
-  case  1: return GPTIMER1_BASE;
-  case  2: return GPTIMER2_BASE;
-  case  3: return GPTIMER3_BASE;
-  case  4: return GPTIMER4_BASE;
-  case  5: return GPTIMER5_BASE;
-  case  6: return GPTIMER6_BASE;
-  case  7: return GPTIMER7_BASE;
-  case  8: return GPTIMER8_BASE;
-  case  9: return GPTIMER9_BASE;
-  case 10: return GPTIMER10_BASE;
-  case 11: return GPTIMER11_BASE;
-  case 12: return GPTIMER12_BASE;
-  default: return 0;
-  }
-}
-
-
-VOID
-TimerInit (
-  VOID
-  )
-{
-  UINTN  Timer            = 4;
-  UINT32 TimerBaseAddress = TimerBase(Timer);
-
-  // Set count & reload registers
-  MmioWrite32 (TimerBaseAddress + GPTIMER_TCRR, 0x00000000);
-  MmioWrite32 (TimerBaseAddress + GPTIMER_TLDR, 0x00000000);
-
-  // Disable interrupts
-  MmioWrite32 (TimerBaseAddress + GPTIMER_TIER, TIER_TCAR_IT_DISABLE | TIER_OVF_IT_DISABLE | TIER_MAT_IT_DISABLE);
-
-  // Start Timer
-  MmioWrite32 (TimerBaseAddress + GPTIMER_TCLR, TCLR_AR_AUTORELOAD | TCLR_ST_ON);
-
-}
+ 
 
 STATIC VOID UartInit(VOID)
 {
@@ -93,6 +50,79 @@ GpmcConfiguration (
 
 }
 
+#define PUBLIC_API_BASE                                 (0x28400)
+
+#define PUBLIC_API_IRQ_REGISTER                         (0x44)
+#define PUBLIC_API_IRQ_UNREGISTER                       (0x48)
+#define PUBLIC_API_CM_ENABLEMODULECLOCKS                (0xA0)
+#define PUBLIC_API_WDTIMER_DISABLE                      (0x54)
+#define PUBLIC_API_CTRL_CONFIGUREPADS                   (0xA8)
+
+//PUBLIC_API_IRQ_REGISTER
+typedef UINT32 (** const IRQ_Register_pt)( UINT32,
+                                           UINT32,
+                                           UINT32 );
+#define RomIrqRegister(a, b, c) \
+   (*(IRQ_Register_pt) ((PUBLIC_API_BASE+PUBLIC_API_IRQ_REGISTER)&0xFFFFFFFE))(a, b, c);
+
+//PUBLIC_API_IRQ_UNREGISTER
+typedef UINT32 (** const IRQ_UnRegister_pt)( UINT32 );
+#define RomIrqUnRegister(a) \
+   (*(IRQ_UnRegister_pt) (PUBLIC_API_BASE+PUBLIC_API_IRQ_UNREGISTER))(a);
+
+// PUBLIC_API_WDTIMER_DISABLE
+typedef void (** const HAL_WDTIMER_Disable_pt)( void );
+#define RomWdtimerDisable() \
+  (*(HAL_WDTIMER_Disable_pt) ((PUBLIC_API_BASE+PUBLIC_API_WDTIMER_DISABLE)&0xFFFFFFFE))();
+
+//PUBLIC_API_CM_ENABLEMODULECLOCKS
+typedef UINT32 (** const HAL_CM_EnableModuleClocks_pt)( UINT32, UINT32 );
+#define RomEnableClocks(a, b) \
+  (*(HAL_CM_EnableModuleClocks_pt) ((PUBLIC_API_BASE+PUBLIC_API_CM_ENABLEMODULECLOCKS)&0xFFFFFFFE))(a, b);
+
+//PUBLIC_API_CTRL_CONFIGUREPADS
+typedef UINT32 (** const HAL_CTRL_ConfigurePads_pt)( UINT32, UINT32 );
+#define RomCtrlConfigurePads(a, b) \
+  (*(HAL_CTRL_ConfigurePads_pt) ((PUBLIC_API_BASE+PUBLIC_API_CTRL_CONFIGUREPADS)&0xFFFFFFFE))(a, b);
+
+VOID
+PadConfiguration (
+  VOID
+  )
+{
+  // TODO: pad configuration
+
+  // Configure UART3 pads
+  RomCtrlConfigurePads (2, 2);
+
+}
+
+VOID
+ClockInit (
+  VOID
+  )
+{
+  // TODO: clocks configuration code clean up
+
+  // CORE, PER DPLLs are configured part of Configuration header which OMAP4 ROM parses.
+
+  // Turn on functional & interface clocks to MMC1 and I2C1 modules.
+  MmioOr32(0x4a009328, 0x03070002);
+
+  //Enable DMTIMER3 with SYS_CLK source
+  MmioOr32(0x4A009440, 0x2);
+
+  //Enable DMTIMER4 with SYS_CLK source
+  MmioOr32(0x4A009448, 0x2);
+
+  // Enable UART3 clocks
+  RomEnableClocks (2, 2);
+
+  // Enable watchdog interface clocks
+  RomEnableClocks (6, 1);
+
+}
+
 void loaddisplay();
 
 RETURN_STATUS
@@ -101,8 +131,8 @@ TimerConstructor (
   VOID
   )
 {
-  UINTN  Timer            = 4;
-  UINT32 TimerBaseAddress = TimerBase(Timer);
+ 
+  UINT32 TimerBaseAddress = GPTIMER4_BASE;
 	
   // If the DMTIMER3 and DMTIMER4 are not enabled it is probably because it is the first call to TimerConstructor
   if ((MmioRead32 (0x4A009440) & 0x3) == 0x0) {
@@ -158,6 +188,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
 
   // Initialize (fake) UART.
   UartInit();
+    loaddisplay();
 
   // Declare UEFI region
   MemoryBase     = FixedPcdGet32(PcdSystemMemoryBase);
@@ -178,10 +209,9 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
         StackBase,
         StackSize
     ));
-
-
-  TimerInit();
-
+  PadConfiguration();
+ 
+ClockInit();
   HobList = HobConstructor(
       (VOID *)UefiMemoryBase, UefiMemorySize, (VOID *)UefiMemoryBase,
       StackBase);
@@ -217,7 +247,7 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   Status = PlatformPeim();
   ASSERT_EFI_ERROR(Status);
 
-  GpmcConfiguration();
+//  GpmcConfiguration();
 
   // Install SoC driver HOBs
  // InstallPlatformHob();

@@ -1,25 +1,29 @@
 #/** @file
 # EDK Serial port lib
 #
-#  Copyright (c) 2018, Intel Corporation. All rights reserved.<BR>
 # Copyright (c) 2009, Apple Inc. All rights reserved.<BR>
 #
-#  SPDX-License-Identifier: BSD-2-Clause-Patent
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.php
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
 #
 #
 #**/
 
 [Defines]
   INF_VERSION                    = 0x00010005
-  BASE_NAME                      = OMAP4430SerialPortLib
+  BASE_NAME                      = PandaBoardSerialPortLib
   FILE_GUID                      = 97546cbd-c0ff-4c48-ab0b-e4f58862acd3
-  MODULE_TYPE                    = BASE
+  MODULE_TYPE                    = PEIM
   VERSION_STRING                 = 1.0
   LIBRARY_CLASS                  = SerialPortLib
 
 
 #
-#  VALID_ARCHITECTURES           = ARM IA32 X64 EBC
+#  VALID_ARCHITECTURES           = IA32 X64 IPF EBC
 #
 
 [Sources.common]
@@ -28,6 +32,7 @@
 [LibraryClasses]
   DebugLib
   IoLib
+  OmapLib
 
 [Packages]
   EmbeddedPkg/EmbeddedPkg.dec
@@ -35,5 +40,5 @@
   OMAP4430Pkg/OMAP4430Pkg.dec
 
 [FixedPcd]
-  gOMAP4430PkgTokenSpaceGuid.PcdOmap35xxConsoleUart
-
+  gOmap44xxTokenSpaceGuid.PcdOmap44xxConsoleUart
+  gEfiMdePkgTokenSpaceGuid.PcdUartDefaultBaudRate

@@ -1,8 +1,6 @@
 #/** @file
 #  
-#    Component discription file for Timer module
-#  
-#  Copyright (c) 2009, Apple Inc. All rights reserved.<BR>
+#  Copyright (c) 2008 - 2010, Apple Inc. All rights reserved.<BR>
 #  This program and the accompanying materials
 #  are licensed and made available under the terms and conditions of the BSD License
 #  which accompanies this distribution.  The full text of the license may be found at
@@ -15,43 +13,36 @@
 
 [Defines]
   INF_VERSION                    = 0x00010005
-  BASE_NAME                      = PandaBoardTimerDxe
-  FILE_GUID                      = 6ddbf09b-cfc9-43cc-9e81-0784ba312ca0
+  BASE_NAME                      = TWL6030
+  FILE_GUID                      = 71fe861a-5450-48b6-bfb0-b93522616f99
   MODULE_TYPE                    = DXE_DRIVER
   VERSION_STRING                 = 1.0
 
-  ENTRY_POINT                    = TimerInitialize
+  ENTRY_POINT                    = TWL6030Initialize
+
 
 [Sources.common]
-  Timer.c
+  TWL6030.c
 
 [Packages]
-  OMAP4430Pkg/OMAP4430Pkg.dec
   MdePkg/MdePkg.dec
   EmbeddedPkg/EmbeddedPkg.dec
-  ArmPkg/ArmPkg.dec
+  OMAP4430Pkg/OMAP4430Pkg.dec
 
 [LibraryClasses]
-  BaseLib
-  UefiRuntimeServicesTableLib
-  UefiLib
-  UefiBootServicesTableLib
   BaseMemoryLib
-  DebugLib
+  PcdLib
+  UefiLib
   UefiDriverEntryPoint
-  IoLib
-  OmapLib
+  MemoryAllocationLib
 
 [Guids]
-
+  
 [Protocols]
-  gEfiTimerArchProtocolGuid  
-  gHardwareInterruptProtocolGuid
+  gEfiSmbusHcProtocolGuid
+  gEmbeddedExternalDeviceProtocolGuid
 
-[Pcd.common]
-  gEmbeddedTokenSpaceGuid.PcdTimerPeriod
-  gEmbeddedTokenSpaceGuid.PcdEmbeddedPerformanceCounterPeriodInNanoseconds
-  gOMAP4430PkgTokenSpaceGuid.PcdOmap44xxArchTimer
+[Pcd]
 
-[Depex]
-  gHardwareInterruptProtocolGuid
+[depex]
+  gEfiSmbusHcProtocolGuid

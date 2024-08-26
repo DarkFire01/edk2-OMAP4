@@ -404,7 +404,7 @@ void dispc_set_lcd_size(enum omap_channel channel, UINT32 width, UINT32 height)
 		dispc_write_reg(DISPC_SIZE_LCD2, val);
 	else
 #endif
-	dispc_write_reg(DISPC_SIZE_LCD, val);
+		dispc_write_reg(DISPC_SIZE_LCD, val);
 }
 
 void dispc_enable_lcd_out(BOOLEAN enable)
@@ -435,6 +435,7 @@ void dispc_pck_free_enable(BOOLEAN enable)
 {
 	REG_FLD_MOD(DISPC_CONTROL, enable ? 1 : 0, 27, 27);
 }
+ 
 
 void dispc_set_control2_reg()
 {
@@ -1610,47 +1611,31 @@ static UINT16 wait_for_pin(void)
 
 void	lcd_init()
 {
-	unsigned char	data_for_lcd;
+unsigned char	data_for_lcd;
 
 	omap_set_gpio_direction(GPIO_LCD_EN, 0);		
 	omap_set_gpio_dataout(GPIO_LCD_EN, 1);
 
-	omap_set_gpio_direction(GPIO_LCD_CP_EN, 0);		
+	omap_set_gpio_direction(GPIO_LCD_CP_EN, 0); 	
 	omap_set_gpio_dataout(GPIO_LCD_CP_EN, 1);
 
-	i2c_init(OMAP_I2C_STANDARD, 0x36);
-	select_bus(I2C2, OMAP_I2C_STANDARD);
+	select_bus(1, OMAP_I2C_STANDARD);
 
-#define	LM3528_UNISON	1
+	data_for_lcd	=	0x05;
 
-#ifdef	LM3528_UNISON
-	data_for_lcd	=	0xc5;	
-#else
-	data_for_lcd	=	0xc3;	
-#endif
-	i2c_write(0x36, 0x10, 1, &data_for_lcd, 1);	
+	i2c_write(0x38, 0x10, 1, &data_for_lcd, 1); 	
+	
+	data_for_lcd	=		0x42;
+	i2c_write(0x38, 0x30, 1, &data_for_lcd, 1); 	
+	
+	data_for_lcd	=		0x7F;
+	i2c_write(0x38, 0xA0, 1, &data_for_lcd, 1); 	
 
-	omap_set_gpio_dataout(GPIO_LCD_EN, 0);	
-
-
-	data_for_lcd	=	0x00;	
-	i2c_write(0x36, 0x80, 1, &data_for_lcd, 1);	
-
-	omap_set_gpio_dataout(GPIO_LCD_EN, 1);
-
-	data_for_lcd	=	0x7A;
-
-	i2c_write(0x36, 0xA0, 1, &data_for_lcd, 1);	
-
-#ifndef	LM3528_UNISON	
-	data_for_lcd	=	0x7f;
-	i2c_write(0x36, 0xB0, 1, &data_for_lcd, 1);	
-#endif
-
-	select_bus(0, 400);			
+	select_bus(0, OMAP_I2C_STANDARD);			
 
 	omap_set_gpio_direction(GPIO_LCD_RESET_N, 0);	
-	omap_set_gpio_dataout(GPIO_LCD_RESET_N, 0);	
+	omap_set_gpio_dataout(GPIO_LCD_RESET_N, 1); 
+	omap_set_gpio_dataout(GPIO_LCD_RESET_N, 0);
 	omap_set_gpio_dataout(GPIO_LCD_RESET_N, 1);
 
 }
@@ -1699,6 +1684,7 @@ void init_panel()
 
 	///dsi2_init();
 }
+
 UINT32* Draw = (UINT32*)0x87000000;
 void loaddisplay()
 {
@@ -1707,16 +1693,13 @@ void loaddisplay()
     configure_dispc();
 
 
+
 	dispc_set_control2_reg();
 	dispc_set_lcd_size(OMAP_DSS_CHANNEL_LCD2, 480, 801);
     dispc_go(OMAP_DSS_CHANNEL_LCD2);
+	dispc_set_lcd_size(OMAP_DSS_CHANNEL_LCD, 480, 801);
       dispc_go(OMAP_DSS_CHANNEL_LCD);
-    for(int i = 0; i < 1000; i++)
-    {
-        for(int x = 0; x < 100; x++)
-        {
-        Draw = Draw + 4 * x * i;
-        *Draw = 0xFF00FF;
-        }
-    }
+	dispc_enable_lcd_out(1);
+	 *Draw = 0xFF00FF;
+  
 }

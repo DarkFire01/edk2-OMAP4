@@ -62,7 +62,12 @@
 
   SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
   RealTimeClockLib|EmbeddedPkg/Library/VirtualRealTimeClockLib/VirtualRealTimeClockLib.inf
+  OmapLib|OMAP4430Pkg/Library/OmapLib/OmapLib.inf
+  OmapDmaLib|OMAP4430Pkg/Library/OmapDmaLib/OmapDmaLib.inf
+  TimerLib|OMAP4430Pkg/Library/Omap44xxTimerLib/Omap44xxTimerLib.inf  
   TimeBaseLib|EmbeddedPkg/Library/TimeBaseLib/TimeBaseLib.inf
+  DmaLib|EmbeddedPkg/Library/NonCoherentDmaLib/NonCoherentDmaLib.inf
+
 
   # USB Requirements
   UefiUsbLib|MdePkg/Library/UefiUsbLib/UefiUsbLib.inf
@@ -81,7 +86,7 @@
   VarCheckLib|MdeModulePkg/Library/VarCheckLib/VarCheckLib.inf
 
   # SimpleFbDxe
-  FrameBufferBltLib|OMAP4430Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
+ # FrameBufferBltLib|OMAP4430Pkg/Library/FrameBufferBltLib/FrameBufferBltLib.inf
   
   # Platform Drivers
   SerialPortLib|OMAP4430Pkg/Library/SerialPortLib/SerialPortLib.inf
@@ -212,10 +217,10 @@
   EmbeddedPkg/MetronomeDxe/MetronomeDxe.inf
 
   MdeModulePkg/Universal/Console/ConPlatformDxe/ConPlatformDxe.inf
- # MSM8909Pkg/Drivers/ConSplitterDxe/ConSplitterDxe.inf
- # MSM8909Pkg/Drivers/GraphicsConsoleDxe/GraphicsConsoleDxe.inf
-  MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf
-  MdeModulePkg/Universal/SerialDxe/SerialDxe.inf
+  MdeModulePkg/Universal/Console/ConSplitterDxe/ConSplitterDxe.inf
+  MdeModulePkg/Universal/Console/GraphicsConsoleDxe/GraphicsConsoleDxe.inf  
+  #EmbeddedPkg/SerialDxe/SerialDxe.inf
+  MdeModulePkg/Universal/Console/TerminalDxe/TerminalDxe.inf 
 
   MdeModulePkg/Universal/Variable/RuntimeDxe/VariableRuntimeDxe.inf
 
@@ -230,7 +235,7 @@
   # SoC Drivers
   #
 
-  OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
+ # OMAP4430Pkg/Drivers/KeypadDxe/KeypadDxe.inf
 
 
   #
@@ -241,12 +246,30 @@
   #
   # Platform Dxes
   #
-  OMAP4430Pkg/Drivers/OMAP4430PkgDxe/OMAP4430PkgDxe.inf
-  OMAP4430Pkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
-  OMAP4430Pkg/Drivers/LogoDxe/LogoDxe.inf
-  OMAP4430Pkg/Drivers/SmBus/SmBus.inf
-  OMAP4430Pkg/Drivers/GpioDxe/GpioDxe.inf
 
+  OMAP4430Pkg/Library/Omap44xxTimerLib/Omap44xxTimerLib.inf  
+  OMAP4430Pkg/Library/OmapLib/OmapLib.inf
+  OMAP4430Pkg/Library/OmapDmaLib/OmapDmaLib.inf
+  OMAP4430Pkg/Drivers/SmbusDxe/Smbus.inf
+  OMAP4430Pkg/Drivers/Gpio/Gpio.inf
+  OMAP4430Pkg/Drivers/TimerDxe/TimerDxe.inf 
+  OMAP4430Pkg/Drivers/LcdGraphicsOutputDxe/LcdGraphicsOutputDxe.inf
+  OMAP4430Pkg/Drivers/TWL6030Dxe/TWL6030.inf
+  EmbeddedPkg/Universal/MmcDxe/MmcDxe.inf
+  OMAP4430Pkg/Drivers/Flash/Flash.inf
+  OMAP4430Pkg/Drivers/MmcHostDxe/MmcHostDxe.inf
+  
+  #
+  # USB
+  #
+  OMAP4430Pkg/Drivers/PciEmulation/PciEmulation.inf
+
+  MdeModulePkg/Bus/Pci/EhciDxe/EhciDxe.inf {
+    <PcdsFixedAtBuild>
+      gEfiMdePkgTokenSpaceGuid.PcdDebugPrintErrorLevel|0x800fffff
+  }
+
+ 
   #
   # USB Host Support
   #
@@ -274,6 +297,7 @@
   MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
   MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
+  MdeModulePkg/Universal/FvSimpleFileSystemDxe/FvSimpleFileSystemDxe.inf
   FatPkg/EnhancedFatDxe/Fat.inf
 
   #
@@ -302,13 +326,6 @@
   MdeModulePkg/Universal/SetupBrowserDxe/SetupBrowserDxe.inf
   MdeModulePkg/Universal/DriverHealthManagerDxe/DriverHealthManagerDxe.inf
   MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
-  MdeModulePkg/Application/UiApp/UiApp.inf {
-    <LibraryClasses>
-      NULL|MdeModulePkg/Library/DeviceManagerUiLib/DeviceManagerUiLib.inf
-      NULL|MdeModulePkg/Library/BootManagerUiLib/BootManagerUiLib.inf
-      NULL|MdeModulePkg/Library/BootMaintenanceManagerUiLib/BootMaintenanceManagerUiLib.inf
-      PcdLib|MdePkg/Library/DxePcdLib/DxePcdLib.inf
-  }
   ShellPkg/Application/Shell/Shell.inf {
     <LibraryClasses>
       ShellCommandLib|ShellPkg/Library/UefiShellCommandLib/UefiShellCommandLib.inf
@@ -327,6 +344,13 @@
       gEfiMdePkgTokenSpaceGuid.PcdDebugPropertyMask|0xFF
       gEfiShellPkgTokenSpaceGuid.PcdShellLibAutoInitialize|FALSE
       gEfiMdePkgTokenSpaceGuid.PcdUefiLibMaxPrintBufferSize|8000
+  }
+  MdeModulePkg/Application/UiApp/UiApp.inf {
+    <LibraryClasses>
+      NULL|MdeModulePkg/Library/DeviceManagerUiLib/DeviceManagerUiLib.inf
+      NULL|MdeModulePkg/Library/BootManagerUiLib/BootManagerUiLib.inf
+      NULL|MdeModulePkg/Library/BootMaintenanceManagerUiLib/BootMaintenanceManagerUiLib.inf
+      PcdLib|MdePkg/Library/DxePcdLib/DxePcdLib.inf
   }
 !ifdef $(INCLUDE_TFTP_COMMAND)
   ShellPkg/DynamicCommand/TftpDynamicCommand/TftpDynamicCommand.inf
